@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T2SAIM BİRLEŞİK BİLİŞSEL HAFIZA VE SOHBET MERKEZİ</title>
-    
-    <!-- T2SAIM PROMETHEUS AUTH SHIELD -->
-    <script>
-        (function() {
-            if (sessionStorage.getItem("t2saim_auth_token") !== "granted") {
-                window.location.replace("index.html");
-            }
-        })();
-    </script>
-
-    <!-- Tailwind CSS -->
+    <title>T2SAIM Unified Cognitive Memory & Multi-Model Chat</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,130 +13,141 @@
                 extend: {
                     colors: {
                         dark: {
-                            950: '#030508',
-                            900: '#070a10',
-                            850: '#0d121c',
-                            800: '#141c2b',
-                            700: '#1c273c',
-                            600: '#283754'
+                            950: '#090d16',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155'
                         },
-                        accent: {
-                            cyan: '#00f2fe',
-                            blue: '#4facfe',
-                            green: '#00e676',
-                            red: '#ff1744',
-                            amber: '#ffab00',
-                            purple: '#7928ca',
-                            gold: '#c9a84c',
-                            fire: '#ff4500'
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2'
+                        },
+                        purple: {
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea'
                         }
                     },
                     fontFamily: {
-                        mono: ['JetBrains Mono', 'monospace'],
-                        sans: ['Inter', 'sans-serif']
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         body {
-            background-color: #030508;
-            color: #f1f5f9;
-            font-family: 'Inter', sans-serif;
+            background-color: #050811;
+            color: #e2e8f0;
             background-image: 
-                radial-gradient(circle at 20% -10%, rgba(0, 242, 254, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% -10%, rgba(121, 40, 202, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 100%, rgba(255, 69, 0, 0.05) 0%, transparent 60%);
+                radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
             background-attachment: fixed;
         }
-        
         .glass-panel {
-            background: rgba(13, 18, 28, 0.90);
-            backdrop-filter: blur(16px);
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 1rem;
         }
-        
         .glass-card {
-            background: rgba(20, 28, 43, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.2s ease-in-out;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        .chat-bubble-user {
-            background: rgba(0, 242, 254, 0.12);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-        }
-
         .chat-bubble-ai {
-            background: rgba(20, 28, 43, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+        }
+        .chat-bubble-user {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.35);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(51, 65, 85, 0.8);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(6, 182, 212, 0.5);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+<body class="min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-white">
 
-    <!-- STANDART T2SAIM ÜST NAVİGASYON BARI -->
-    <header class="border-b border-slate-800/80 bg-dark-900/90 backdrop-blur-md px-6 py-3.5 sticky top-0 z-50">
-        <div class="max-w-[1750px] mx-auto flex flex-col xl:flex-row items-center justify-between gap-4">
+    <!-- ÜST NAVİGASYON VE DURUM BARI -->
+    <header class="border-b border-slate-800/80 bg-dark-950/80 backdrop-blur-md sticky top-0 z-50 px-6 py-3.5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             
             <div class="flex items-center gap-3">
-                <span class="text-2xl">🧠</span>
+                <div class="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 shadow-lg shadow-cyan-500/20 text-white font-mono font-bold text-base">
+                    🧠
+                </div>
                 <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <h1 class="text-lg font-black tracking-tight text-white font-mono flex items-center gap-2">
-                            T2SAIM UNIFIED MEMORY & CHAT HUB
-                        </h1>
-                        <span class="text-xs px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-mono border border-purple-500/30 font-bold">
-                            GEMINI FLASH · SPARK · PRO · NOTEBOOKLM
-                        </span>
-                        <span class="flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            3 EKRAN CANLI (4080x1920)
-                        </span>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-sm font-bold tracking-wide text-white font-mono">T2SAIM UNIFIED MEMORY & CHAT HUB</h1>
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20 font-bold">GEMINI FLASH · SPARK · PRO · NOTEBOOKLM</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 font-mono mt-0.5">
-                        459k Görsel Hafıza (DuckDB) · Antigravity History Suite · Gemini Flash / Spark / Pro MCP · LTM Ontoloji Grafı
-                    </p>
+                    <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
+                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-emerald-400 text-[11px] font-bold">3 EKRAN CANLI (4080x1920)</span>
+                        <span class="text-slate-600">·</span>
+                        <span class="text-[11px]">459k Görsel Hafıza (DuckDB) · Antigravity History Suite · Gemini Flash / Spark / Pro MCP · LTM Ontoloji Grafı</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Standart Çapraz Navigasyon Butonları -->
-            <div class="flex items-center gap-2 flex-wrap font-mono text-xs">
-                <a href="tarkan_index.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 transition flex items-center gap-1.5 font-bold">⚡ <span>Tarkan Index</span></a>
-                <a href="daron_acemoglu_master_synthesis.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 transition flex items-center gap-1.5 font-bold">📜 <span>Daron Sentezi</span></a>
-                <a href="turkey_gullini_crisis_protocol.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 hover:bg-red-500/20 transition flex items-center gap-1.5 font-bold">🔺 <span>Gullini Protokolü</span></a>
-                <a href="structural_decay.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-300 hover:bg-purple-500/20 transition flex items-center gap-1.5 font-bold">🏛️ <span>Yapısal Çürüme</span></a>
-                <a href="t2saim_unified_memory_chat.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-purple-500/30 border border-purple-400 text-purple-200 font-bold flex items-center gap-1.5">🧠 <span>Hafıza & Sohbet</span></a>
-                <a href="index.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-orange-500/15 border border-orange-500/40 text-orange-300 hover:bg-orange-500/25 transition flex items-center gap-1.5 font-bold">🔥 <span>Prometheus Kapısı</span></a>
+            <!-- HIZLI ERİŞİM PORTAL LİNKLERİ -->
+            <div class="flex items-center gap-2 flex-wrap text-xs font-mono">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 transition flex items-center gap-1.5 shadow-sm font-bold">
+                    <span>⚡</span> Prometheus Kapısı
+                </a>
+                <a href="tarkan_index_portal.html" class="px-2.5 py-1.5 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/40 transition flex items-center gap-1">
+                    <span>⚡</span> Tarkan Index
+                </a>
+                <a href="daron_economic_warfare_deep_synthesis.html" class="px-2.5 py-1.5 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/40 transition flex items-center gap-1">
+                    <span>📜</span> Daron Sentezi
+                </a>
+                <a href="gullini_daron_acemoglu_protocol.html" class="px-2.5 py-1.5 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/40 transition flex items-center gap-1">
+                    <span>🔺</span> Gullini Protokolü
+                </a>
+                <a href="t2saim_yapisal_curume_dosyasi.html" class="px-2.5 py-1.5 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/40 transition flex items-center gap-1">
+                    <span>🏛️</span> Yapısal Çürüme
+                </a>
+                <a href="t2saim_unified_memory_chat.html" class="px-2.5 py-1.5 rounded-lg bg-purple-500/20 border border-purple-500/40 text-purple-300 hover:bg-purple-500/30 transition flex items-center gap-1 font-bold">
+                    <span>💬</span> Hafıza & Sohbet
+                </a>
             </div>
-            
+
         </div>
     </header>
 
-    <!-- ANA GÖVDE: 4 KATMANLI BİRLEŞİK HAFIZA VE SOHBET MERKEZİ -->
-    <main class="max-w-[1750px] w-full mx-auto px-6 py-6 space-y-6 flex-1">
+    <!-- ANA İÇERİK IZGARASI -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 space-y-6">
 
-        <!-- 4'LÜ DURUM KARTLARI -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-mono">
+        <!-- 4'LÜ TELEMETRİ METRİK KARTLARI -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             
-            <!-- 1. GÖRSEL HAFIZA (DUCKDB) -->
+            <!-- 1. GÖRSEL VE OCR HAFIZASI -->
             <div class="glass-card p-4 rounded-xl border-cyan-500/30 space-y-1">
                 <div class="flex justify-between items-center text-slate-400 text-[10px]">
-                    <span>GÖRSEL HAFIZA (DUCKDB)</span>
-                    <span class="text-cyan-400 font-bold">PORT 8001 CANLI</span>
+                    <span>3 EKRAN VİZYON DECK</span>
+                    <span class="text-cyan-400 font-bold">4080x1920 VIRTUAL</span>
                 </div>
-                <div class="text-xl font-bold text-white font-mono" id="statVisionCount">459.759+ Kare</div>
-                <p class="text-[10px] text-slate-400 font-sans">3 Ekran (2 Vertikal + 1 Horizontal) · WinRT OCR · Sıfır VRAM.</p>
+                <div class="text-xl font-bold text-white font-mono" id="statVisionCount">459.759+ An</div>
+                <p class="text-[10px] text-slate-400 font-sans">2 Vertikal + 1 Horizontal Ekran WinRT OCR & DuckDB.</p>
             </div>
 
-            <!-- 2. ANTIGRAVITY HISTORY -->
+            <!-- 2. GBRAIN TRANSCRIPT SUITE -->
             <div class="glass-card p-4 rounded-xl border-amber-500/30 space-y-1">
                 <div class="flex justify-between items-center text-slate-400 text-[10px]">
                     <span>GBRAIN TRANSCRIPT SUITE</span>
@@ -172,7 +173,7 @@
                     <span>LTM ADLİ GRAF</span>
                     <span class="text-emerald-400 font-bold">SQLITE WAL</span>
                 </div>
-                <div class="text-xl font-bold text-white font-mono" id="statLtmCount">Silinemez Graf</div>
+                <div class="text-xl font-bold text-white font-mono" id="statLtmCount">511.265 Düğüm</div>
                 <p class="text-[10px] text-slate-400 font-sans">Kavramlar, 3-ekran pencereleri ve adli kanıt düğümleri kilitli.</p>
             </div>
 
@@ -214,7 +215,7 @@
                         <button onclick="setMode('vision')" id="btnModeVision" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">👁️ 3 Ekran OCR</button>
                         <button onclick="setMode('notebooklm')" id="btnModeNlm" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">📚 NotebookLM</button>
                         <button onclick="setMode('gbrain')" id="btnModeGbrain" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">🔮 GBRAIN Düşünce</button>
-                        <button onclick="setMode('hermes')" id="btnModeHermes" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">🏛️ Hermes (6.7k Mesaj)</button>
+                        <button onclick="setMode('hermes')" id="btnModeHermes" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">🏛️ Hermes (264k Mesaj)</button>
                     </div>
                 </div>
 
@@ -234,13 +235,14 @@
                             Selam Kaptan. Birleşik Hafıza İstasyonu tam kapasite çevrimiçi. 
                             <strong>3 Ekranınız (2 Vertikal + 1 Horizontal = 4080x1920)</strong> üzerindeki anlık OCR metinleri, 
                             <strong>459k geçmiş ekran kaydı (DuckDB)</strong>, 
-                            <strong>4.529 dosyalık GBRAIN Kasası</strong> ve 
+                            <strong>Spock / ChatGPT Külliyatı (364 MB)</strong>, 
+                            <strong>Hermes & Picard (264k Mesaj)</strong> ve 
                             <strong>Gemini Flash / Spark / NotebookLM MCP (Port 3456)</strong> emrinizdedir.
                         </p>
                         <div class="flex items-center gap-2 pt-1 font-mono text-[10px] text-slate-400 flex-wrap">
-                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('WinRT OCR hakkında neler konuşuldu?')">💡 "WinRT OCR hakkında neler konuşuldu?"</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('hafıza sistemini nasıl kullanırım?')">💡 "Hafıza Sistemini Nasıl Kullanırım?"</span>
                             <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('18 Kasım krizi için Daron sentezi ne diyor?')">💡 "18 Kasım Daron Sentezi"</span>
-                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('3 ekrandaki son görsel kareleri listele')">💡 "3 Ekran Son Kareler"</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('Spock manipülasyon teorisi nedir?')">💡 "Spock Manipülasyon Teorisi"</span>
                         </div>
                     </div>
 
@@ -256,7 +258,7 @@
                             class="flex-1 bg-dark-950 border border-slate-700 rounded-xl px-4 py-3 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
                             autocomplete="off"
                         >
-                        <button type="submit" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-mono text-xs font-bold hover:opacity-95 transition shadow-lg shadow-purple-500/20">
+                        <button type="submit" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-mono text-xs font-bold hover:opacity-95 transition shadow-lg shadow-purple-500/20 cursor-pointer">
                             Sorgula ↵
                         </button>
                     </div>
@@ -318,7 +320,7 @@
                             <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">4080x1920</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <button onclick="triggerLiveSnap()" class="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded hover:bg-cyan-500/30">📸 Anlık Çek</button>
+                            <button onclick="triggerLiveSnap()" class="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded hover:bg-cyan-500/30 font-bold">📸 Anlık Çek</button>
                             <button onclick="refreshVisionMoments()" class="text-[10px] font-mono text-slate-400 hover:text-white">Yenile ⟳</button>
                         </div>
                     </div>
@@ -374,7 +376,7 @@
             currentMode = mode;
             ['btnModeAll', 'btnModeVision', 'btnModeNlm', 'btnModeGbrain', 'btnModeHermes'].forEach(id => {
                 const btn = document.getElementById(id);
-                btn.className = "px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent";
+                if (btn) btn.className = "px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent";
             });
 
             if (mode === 'all') document.getElementById('btnModeAll').className = "px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30";
@@ -389,8 +391,8 @@
             handleSend(new Event('submit'));
         }
 
-                async function handleSend(e) {
-            e.preventDefault();
+        async function handleSend(e) {
+            if (e && e.preventDefault) e.preventDefault();
             const input = document.getElementById('queryInput');
             const q = input.value.trim();
             if (!q) return;
@@ -419,7 +421,7 @@
             chat.scrollTop = chat.scrollHeight;
 
             try {
-                // Master API Birleşik Hafıza Araması Yap (Spock, Hermes, Picard, OCR, GBRAIN)
+                // Master API Birleşik Hafıza Araması Yap
                 const res = await fetch("http://127.0.0.1:8001/api/unified/chat", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -431,8 +433,7 @@
                 if (loadEl) loadEl.remove();
 
                 const answerText = data.answer || 'Sorgunuza dair adli kanıt bulunamadı.';
-                const formattedHtml = answerText.replace(/
-/g, '<br>');
+                const formattedHtml = answerText.split('\n').join('<br>');
 
                 chat.innerHTML += `
                     <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[95%] border-purple-500/30 bg-dark-900/95 shadow-xl">
@@ -511,7 +512,6 @@
         async function fetchAgInfo() {
             const outBox = document.getElementById('agOutputBox');
             outBox.classList.remove('hidden');
-            outBox.innerHTML = "⏳ Antigravity LanguageServer ve SQLite veritabanı taranıyor...";
             outBox.innerHTML = `<pre>LanguageServer: 127.0.0.1 (Aktif)\nToplam Düşünce Adımı: 8.147+\nKayıt Formatı: JSONL & Protobuf\nVault Hedefi: E:\\T2SAIM_NEXUS_MIRROR\\.gbrain</pre>`;
         }
 
@@ -582,25 +582,13 @@
                 list.innerHTML = `
                     <div class="glass-card p-3 rounded-xl space-y-1 text-[11px] font-mono border border-slate-800 bg-dark-950/80">
                         <div class="flex justify-between items-center text-cyan-300 font-bold">
-                            <span>📅 2026-08-21 23:55:00</span>
+                            <span>📅 2026-08-22 00:05:00</span>
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">4080x1920 (3 Ekran)</span>
                         </div>
                         <div class="text-amber-300 font-bold">💻 Antigravity.exe - T2SAIM Karargah</div>
                         <div class="text-slate-300 text-[10px] bg-dark-900 p-2 rounded border border-slate-800">
                             📝 OCR: T2SAIM Control Deck Active Session - 3-Ekran Kanvası Canlı İzleme
                         </div>
-                    </div>
-                `;
-            }
-        } catch (e) {
-                list.innerHTML = `
-                    <div class="glass-card p-2.5 rounded-lg space-y-1 text-[11px] font-mono border border-slate-800">
-                        <div class="flex justify-between items-center text-slate-400">
-                            <span class="text-cyan-400 font-bold">Antigravity.exe</span>
-                            <span>21:35:45</span>
-                        </div>
-                        <div class="text-white font-bold truncate">T2SAIM Master Console (Triple Monitor: 2 Vert + 1 Horiz)</div>
-                        <div class="text-slate-300 text-[10px] bg-dark-950 p-1.5 rounded">T2SAIM Control Deck Active Session - Monitoring Telemetry</div>
                     </div>
                 `;
             }
