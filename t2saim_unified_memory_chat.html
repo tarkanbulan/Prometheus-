@@ -214,6 +214,7 @@
                         <button onclick="setMode('vision')" id="btnModeVision" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">👁️ 3 Ekran OCR</button>
                         <button onclick="setMode('notebooklm')" id="btnModeNlm" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">📚 NotebookLM</button>
                         <button onclick="setMode('gbrain')" id="btnModeGbrain" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">🔮 GBRAIN Düşünce</button>
+                        <button onclick="setMode('hermes')" id="btnModeHermes" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">🏛️ Hermes (6.7k Mesaj)</button>
                     </div>
                 </div>
 
@@ -371,7 +372,7 @@
 
         function setMode(mode) {
             currentMode = mode;
-            ['btnModeAll', 'btnModeVision', 'btnModeNlm', 'btnModeGbrain'].forEach(id => {
+            ['btnModeAll', 'btnModeVision', 'btnModeNlm', 'btnModeGbrain', 'btnModeHermes'].forEach(id => {
                 const btn = document.getElementById(id);
                 btn.className = "px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent";
             });
@@ -380,6 +381,7 @@
             if (mode === 'vision') document.getElementById('btnModeVision').className = "px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30";
             if (mode === 'notebooklm') document.getElementById('btnModeNlm').className = "px-2.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold border border-purple-500/30";
             if (mode === 'gbrain') document.getElementById('btnModeGbrain').className = "px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30";
+            if (mode === 'hermes') document.getElementById('btnModeHermes').className = "px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30";
         }
 
         function quickQuery(text) {
