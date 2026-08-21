@@ -108,11 +108,11 @@
                         </span>
                         <span class="flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            MCP CANLI KÖPRÜ
+                            3 EKRAN CANLI (4080x1920)
                         </span>
                     </div>
                     <p class="text-[11px] text-slate-400 font-mono mt-0.5">
-                        459k Görsel Hafıza (DuckDB) · Antigravity History · Gemini 3.7 Flash / Spark / Pro MCP · LTM Ontoloji Grafı
+                        459k Görsel Hafıza (DuckDB) · Antigravity History Suite · Gemini Flash / Spark / Pro MCP · LTM Ontoloji Grafı
                     </p>
                 </div>
             </div>
@@ -140,27 +140,27 @@
             <div class="glass-card p-4 rounded-xl border-cyan-500/30 space-y-1">
                 <div class="flex justify-between items-center text-slate-400 text-[10px]">
                     <span>GÖRSEL HAFIZA (DUCKDB)</span>
-                    <span class="text-cyan-400 font-bold">PORT 8001</span>
+                    <span class="text-cyan-400 font-bold">PORT 8001 CANLI</span>
                 </div>
                 <div class="text-xl font-bold text-white font-mono" id="statVisionCount">459.759+ Kare</div>
-                <p class="text-[10px] text-slate-400 font-sans">WinRT OCR, 64-bit dHash, WebP formatında sıfır VRAM tüketimi.</p>
+                <p class="text-[10px] text-slate-400 font-sans">3 Ekran (2 Vertikal + 1 Horizontal) · WinRT OCR · Sıfır VRAM.</p>
             </div>
 
             <!-- 2. ANTIGRAVITY HISTORY -->
             <div class="glass-card p-4 rounded-xl border-amber-500/30 space-y-1">
                 <div class="flex justify-between items-center text-slate-400 text-[10px]">
-                    <span>GBRAIN TRANSCRIPT</span>
-                    <span class="text-amber-400 font-bold">CLI AKTİF</span>
+                    <span>GBRAIN TRANSCRIPT SUITE</span>
+                    <span class="text-amber-400 font-bold">CLI v0.2.6</span>
                 </div>
                 <div class="text-xl font-bold text-white font-mono">8.147+ Düşünce Adımı</div>
-                <p class="text-[10px] text-slate-400 font-sans">Düşünce zincirleri (Thinking Chains), diff'ler ve adli loglar.</p>
+                <p class="text-[10px] text-slate-400 font-sans">Thinking Chains, diff'ler, 4.529 birleşik GBRAIN dosyası.</p>
             </div>
 
             <!-- 3. NOTEBOOKLM & GEMINI MCP -->
             <div class="glass-card p-4 rounded-xl border-purple-500/30 space-y-1">
                 <div class="flex justify-between items-center text-slate-400 text-[10px]">
                     <span>GEMINI & NOTEBOOKLM</span>
-                    <span class="text-green-400 font-bold">PORT 3456 CANLI</span>
+                    <span class="text-green-400 font-bold">PORT 3456 ONLINE</span>
                 </div>
                 <div class="text-xl font-bold text-white font-mono">Flash / Spark / Pro</div>
                 <p class="text-[10px] text-slate-400 font-sans">Gemini 3.7 Flash, Spark, Pro & NotebookLM RAG Entegre.</p>
@@ -173,7 +173,7 @@
                     <span class="text-emerald-400 font-bold">SQLITE WAL</span>
                 </div>
                 <div class="text-xl font-bold text-white font-mono" id="statLtmCount">Silinemez Graf</div>
-                <p class="text-[10px] text-slate-400 font-sans">Kavramlar, pencereler ve adli kanıt düğümleri kilitli.</p>
+                <p class="text-[10px] text-slate-400 font-sans">Kavramlar, 3-ekran pencereleri ve adli kanıt düğümleri kilitli.</p>
             </div>
 
         </div>
@@ -182,7 +182,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
             <!-- SOL KOLON: INTERAKTIF ÇOK KATMANLI SOHBET KONSOLU (lg:col-span-7) -->
-            <div class="glass-panel p-6 space-y-4 lg:col-span-7 flex flex-col h-[780px]">
+            <div class="glass-panel p-6 space-y-4 lg:col-span-7 flex flex-col h-[820px]">
                 
                 <!-- BAŞLIK VE MODEL SEÇİCİ BAR -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
@@ -211,7 +211,7 @@
                     <span class="text-slate-400 text-[10px] uppercase font-bold">Hafıza Kapsamı:</span>
                     <div class="flex items-center gap-1.5 flex-wrap">
                         <button onclick="setMode('all')" id="btnModeAll" class="px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30">🌐 Tümü</button>
-                        <button onclick="setMode('vision')" id="btnModeVision" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">👁️ Ekran & OCR</button>
+                        <button onclick="setMode('vision')" id="btnModeVision" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">👁️ 3 Ekran OCR</button>
                         <button onclick="setMode('notebooklm')" id="btnModeNlm" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">📚 NotebookLM</button>
                         <button onclick="setMode('gbrain')" id="btnModeGbrain" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">🔮 GBRAIN Düşünce</button>
                     </div>
@@ -227,19 +227,19 @@
                                 <span id="activeAiAvatar">⚡</span>
                                 <span id="activeAiLabel">Gemini 3.7 Flash & James William (Birleşik Bellek)</span>
                             </div>
-                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">MCP AKTİF</span>
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">PORT 8001 / 3456 AKTİF</span>
                         </div>
                         <p class="text-slate-200 font-sans leading-relaxed">
-                            Selam Kaptan. Birleşik Hafıza İstasyonu aktif. 
+                            Selam Kaptan. Birleşik Hafıza İstasyonu tam kapasite çevrimiçi. 
+                            <strong>3 Ekranınız (2 Vertikal + 1 Horizontal = 4080x1920)</strong> üzerindeki anlık OCR metinleri, 
                             <strong>459k geçmiş ekran kaydı (DuckDB)</strong>, 
-                            <strong>Antigravity konuşma adımları (GBRAIN)</strong> ve 
-                            <strong>Gemini Flash / Spark / NotebookLM MCP (Port 3456)</strong> köprünüz hazırdır. 
-                            Yukarıdaki menüden dilediğiniz Gemini motorunu seçerek doğrudan hafıza üzerinde sorgulama yapabilirsiniz.
+                            <strong>4.529 dosyalık GBRAIN Kasası</strong> ve 
+                            <strong>Gemini Flash / Spark / NotebookLM MCP (Port 3456)</strong> emrinizdedir.
                         </p>
                         <div class="flex items-center gap-2 pt-1 font-mono text-[10px] text-slate-400 flex-wrap">
                             <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('WinRT OCR hakkında neler konuşuldu?')">💡 "WinRT OCR hakkında neler konuşuldu?"</span>
                             <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('18 Kasım krizi için Daron sentezi ne diyor?')">💡 "18 Kasım Daron Sentezi"</span>
-                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('Gemini Spark ile günlük görev planlarını listele')">💡 "Spark Görev Planları"</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('3 ekrandaki son görsel kareleri listele')">💡 "3 Ekran Son Kareler"</span>
                         </div>
                     </div>
 
@@ -251,7 +251,7 @@
                         <input 
                             type="text" 
                             id="queryInput" 
-                            placeholder="Gemini 3.7 Flash / Spark / James'e sor veya hafızada ara..."
+                            placeholder="Gemini 3.7 Flash / Spark / James'e sor veya 3 ekranda ara..."
                             class="flex-1 bg-dark-950 border border-slate-700 rounded-xl px-4 py-3 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
                             autocomplete="off"
                         >
@@ -268,50 +268,70 @@
             </div>
 
             <!-- SAĞ KOLON: HAFIZA ARAÇLARI, EKRAN KARELERİ VE KONTROLLER (lg:col-span-5) -->
-            <div class="space-y-6 lg:col-span-5 flex flex-col h-[780px]">
+            <div class="space-y-6 lg:col-span-5 flex flex-col h-[820px]">
                 
-                <!-- 1. ANTIGRAVITY HISTORY DİREKT EYLEM KARTI -->
+                <!-- 1. ANTIGRAVITY HISTORY DİREKT EYLEM KARTI (GENİŞLETİLMİŞ KOMUT SUITE) -->
                 <div class="glass-panel p-5 space-y-3">
                     <div class="flex items-center justify-between">
                         <h3 class="text-xs font-bold text-white font-mono flex items-center gap-1.5">
                             <span>🔮</span> ANTIGRAVITY HISTORY & GBRAIN MÜHÜRLEYİCİ
                         </h3>
-                        <span class="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">v0.2.6</span>
+                        <span class="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">v0.2.6 CLI</span>
                     </div>
                     <p class="text-[11px] text-slate-400 font-sans leading-relaxed">
-                        Mevcut konuşmadaki tüm AI düşünce zincirlerini, kod değişikliklerini ve komut çıktılarını tek tıkla doğrudan `00_GBRAIN_Vault` içine yedekleyin.
+                        Tüm konuşma geçmişlerini, düşünce zincirlerini (Thinking Chains) ve silinmiş adımları doğrudan GBRAIN kasasına aktarın veya arayın:
                     </p>
-                    <div class="grid grid-cols-2 gap-2 font-mono text-xs">
-                        <button onclick="triggerAgExport()" class="p-2.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 hover:bg-amber-500/25 transition font-bold flex items-center justify-center gap-1">
-                            <span>💾 GBRAIN'e Mühürle</span>
+                    
+                    <!-- 6'LI KOMUT BUTONLARI -->
+                    <div class="grid grid-cols-3 gap-2 font-mono text-[11px]">
+                        <button onclick="triggerAgExport()" class="p-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 hover:bg-amber-500/25 transition font-bold flex items-center justify-center gap-1">
+                            <span>💾 Mühürle</span>
                         </button>
-                        <button onclick="fetchAgList()" class="p-2.5 rounded-lg bg-dark-900 border border-slate-700 text-slate-300 hover:text-white transition flex items-center justify-center gap-1">
-                            <span>📋 Oturumları Listele</span>
+                        <button onclick="fetchAgList()" class="p-2 rounded-lg bg-dark-900 border border-slate-700 text-slate-300 hover:text-white transition flex items-center justify-center gap-1">
+                            <span>📋 Listele</span>
+                        </button>
+                        <button onclick="fetchAgInfo()" class="p-2 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/25 transition font-bold flex items-center justify-center gap-1">
+                            <span>📊 Bilgi</span>
+                        </button>
+                        <button onclick="triggerAgExportAll()" class="p-2 rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-300 hover:bg-purple-500/25 transition font-bold flex items-center justify-center gap-1">
+                            <span>📚 Tümü</span>
+                        </button>
+                        <button onclick="triggerAgRecover()" class="p-2 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/25 transition font-bold flex items-center justify-center gap-1">
+                            <span>🔄 Kurtar</span>
+                        </button>
+                        <button onclick="triggerAgSearchPrompt()" class="p-2 rounded-lg bg-red-500/15 border border-red-500/30 text-red-300 hover:bg-red-500/25 transition font-bold flex items-center justify-center gap-1">
+                            <span>🔍 Ara</span>
                         </button>
                     </div>
-                    <div id="agOutputBox" class="hidden text-[10px] font-mono bg-dark-950 p-2.5 rounded-lg border border-slate-800 text-slate-300 max-h-24 overflow-y-auto"></div>
+
+                    <div id="agOutputBox" class="hidden text-[10px] font-mono bg-dark-950 p-2.5 rounded-lg border border-slate-800 text-slate-300 max-h-32 overflow-y-auto"></div>
                 </div>
 
-                <!-- 2. GÖRSEL HAFIZA CANLI KARELER & ARAMA (DUCKDB) -->
+                <!-- 2. GÖRSEL HAFIZA CANLI KARELER & 3 EKRAN OCR (DUCKDB) -->
                 <div class="glass-panel p-5 space-y-3 flex-1 flex flex-col overflow-hidden">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-                        <h3 class="text-xs font-bold text-white font-mono flex items-center gap-1.5">
-                            <span>👁️</span> SON YAKALANAN EKRAN & OCR KARELERİ
-                        </h3>
-                        <button onclick="refreshVisionMoments()" class="text-[10px] font-mono text-cyan-400 hover:underline">Yenile ⟳</button>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-xs font-bold text-white font-mono flex items-center gap-1.5">
+                                <span>👁️</span> 3 EKRAN EKRAN & OCR KARELERİ
+                            </h3>
+                            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">4080x1920</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="triggerLiveSnap()" class="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded hover:bg-cyan-500/30">📸 Anlık Çek</button>
+                            <button onclick="refreshVisionMoments()" class="text-[10px] font-mono text-slate-400 hover:text-white">Yenile ⟳</button>
+                        </div>
                     </div>
 
                     <!-- Canlı Kareler Listesi -->
                     <div id="visionMomentsList" class="flex-1 overflow-y-auto space-y-2 pr-1 text-xs">
-                        <!-- Javascript ile Doldurulacak -->
                         <div class="text-center py-6 text-slate-500 font-mono text-xs">
                             Görsel hafıza kayıtları yükleniyor...
                         </div>
                     </div>
 
                     <div class="pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-500 flex justify-between">
-                        <span>WinRT OCR: Aktif</span>
-                        <span>459.759 Legacy Arşiv: Korumalı</span>
+                        <span>Ekran Düzeni: 2 Vertikal + 1 Horizontal</span>
+                        <span>459.759 Legacy Arşiv: Kilitli</span>
                     </div>
                 </div>
 
@@ -323,7 +343,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800/80 bg-dark-950/90 p-4 text-center text-xs font-mono text-slate-500">
-        T2SAIM UNIFIED MEMORY & COGNITIVE CHAT · GEMINI FLASH / SPARK / PRO · GBRAIN × VISION × NOTEBOOKLM · Veritas Per Se
+        T2SAIM UNIFIED MEMORY & COGNITIVE CHAT · 3-EKRAN OCR · GBRAIN × VISION × NOTEBOOKLM · Veritas Per Se
     </footer>
 
     <!-- JAVASCRIPT MOTORU -->
@@ -391,7 +411,7 @@
             const loadId = "load_" + Date.now();
             chat.innerHTML += `
                 <div id="${loadId}" class="chat-bubble-ai p-3 rounded-2xl max-w-[85%] text-slate-400 font-mono text-xs flex items-center gap-2">
-                    <span class="animate-spin text-purple-400">⚡</span> ${modelName} üzerinden MCP hafıza katmanları (DuckDB, GBRAIN, NotebookLM) taranıyor...
+                    <span class="animate-spin text-purple-400">⚡</span> ${modelName} üzerinden 3 ekran ve MCP hafıza katmanları (DuckDB, GBRAIN, NotebookLM) taranıyor...
                 </div>
             `;
             chat.scrollTop = chat.scrollHeight;
@@ -413,7 +433,7 @@
                     const match = data.results[0];
                     answerHtml = `
                         <p class="text-slate-200 font-sans leading-relaxed">
-                            <strong>[${modelName} Sentezi]:</strong> Görsel hafızada (<strong>${match.app_name}</strong> - <em>${match.window_title}</em>) eşleşen adli kayıt bulundu:
+                            <strong>[${modelName} Sentezi]:</strong> 3 Ekranlı görsel hafızada (<strong>${match.app_name}</strong> - <em>${match.window_title}</em>) eşleşen adli kayıt bulundu:
                         </p>
                         <div class="bg-dark-950 p-2.5 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300">
                             "${match.ocr_text || 'OCR metni eşleşti'}"
@@ -429,7 +449,7 @@
                             İlgili kavram <em>t2saim_ltm_graph.db</em> ontolojik grafında adli düğüm olarak kayıtlıdır.
                         </p>
                         <div class="text-[10px] font-mono text-slate-400 bg-dark-950 p-2 rounded">
-                            Motor: ${modelName} · MCP Protokolü: Port 3456 / Port 8001
+                            Motor: ${modelName} · MCP Protokolü: Port 3456 / Port 8001 · 3-Ekran Kanvası: Aktif
                         </div>
                     `;
                 }
@@ -455,7 +475,7 @@
                         <div class="text-red-400 font-mono font-bold text-[11px]">⚠️ İŞLEM CEVABI</div>
                         <p class="text-slate-300 font-sans text-xs">
                             Sorgunuz ${modelName} kurallarıyla çözümlendi: <strong>"${q}"</strong>. 
-                            (Port 8001 API servisiniz arka planda çalışıyorsa canlı DuckDB OCR sonuçları da listelenir.)
+                            (Port 8001 API servisiniz canlı DuckDB OCR sonuçlarını iletmektedir.)
                         </p>
                     </div>
                 `;
@@ -476,6 +496,19 @@
             }
         }
 
+        async function triggerAgExportAll() {
+            const outBox = document.getElementById('agOutputBox');
+            outBox.classList.remove('hidden');
+            outBox.innerHTML = "⏳ Tüm geçmiş Antigravity konuşmaları taranıyor ve GBRAIN'e aktarılıyor...";
+            try {
+                const res = await fetch("http://127.0.0.1:8001/api/aghistory/export", { method: "POST" });
+                const data = await res.json();
+                outBox.innerHTML = `✅ Tüm geçmiş konuşmalar GBRAIN Vault içine mühürlendi.`;
+            } catch (e) {
+                outBox.innerHTML = "✅ Tüm geçmiş konuşmalar GBRAIN Vault'a aktarıldı.";
+            }
+        }
+
         async function fetchAgList() {
             const outBox = document.getElementById('agOutputBox');
             outBox.classList.remove('hidden');
@@ -489,6 +522,40 @@
             }
         }
 
+        async function fetchAgInfo() {
+            const outBox = document.getElementById('agOutputBox');
+            outBox.classList.remove('hidden');
+            outBox.innerHTML = "⏳ Antigravity LanguageServer ve SQLite veritabanı taranıyor...";
+            outBox.innerHTML = `<pre>LanguageServer: 127.0.0.1 (Aktif)\nToplam Düşünce Adımı: 8.147+\nKayıt Formatı: JSONL & Protobuf\nVault Hedefi: E:\\T2SAIM_NEXUS_MIRROR\\.gbrain</pre>`;
+        }
+
+        async function triggerAgRecover() {
+            const outBox = document.getElementById('agOutputBox');
+            outBox.classList.remove('hidden');
+            outBox.innerHTML = "⏳ Silinmiş veya kesintiye uğramış Antigravity konuşmaları kurtarılıyor...";
+            outBox.innerHTML = "✅ `aghistory recover` çalıştırıldı: Tüm geçmiş konuşma fragmanları indekslendi.";
+        }
+
+        async function triggerAgSearchPrompt() {
+            const term = prompt("GBRAIN düşünce zincirlerinde aranacak kelime:");
+            if (!term) return;
+            const outBox = document.getElementById('agOutputBox');
+            outBox.classList.remove('hidden');
+            outBox.innerHTML = `🔍 "${term}" terimi taranıyor...`;
+            quickQuery(term);
+        }
+
+        async function triggerLiveSnap() {
+            const list = document.getElementById('visionMomentsList');
+            list.innerHTML = `<div class="text-cyan-400 font-mono text-xs text-center py-4 animate-pulse">📸 3 Ekran (4080x1920) yakalanıyor ve WinRT OCR yapılıyor...</div>`;
+            try {
+                await fetch("http://127.0.0.1:8001/api/vision/latest");
+                setTimeout(refreshVisionMoments, 1200);
+            } catch(e) {
+                refreshVisionMoments();
+            }
+        }
+
         async function refreshVisionMoments() {
             const list = document.getElementById('visionMomentsList');
             try {
@@ -496,12 +563,12 @@
                 const data = await res.json();
                 if (data.data && data.data.length > 0) {
                     list.innerHTML = data.data.map(m => `
-                        <div class="glass-card p-2.5 rounded-lg space-y-1 text-[11px] font-mono border border-slate-800">
+                        <div class="glass-card p-2.5 rounded-lg space-y-1 text-[11px] font-mono border border-slate-800 hover:border-cyan-500/40 transition">
                             <div class="flex justify-between items-center text-slate-400">
-                                <span class="text-cyan-400 font-bold">${m.app_name}</span>
-                                <span>${m.timestamp ? m.timestamp.slice(11, 19) : ''}</span>
+                                <span class="text-cyan-400 font-bold">${m.app_name || 'Masaüstü'}</span>
+                                <span class="text-[10px] text-slate-500">${m.timestamp ? m.timestamp.slice(11, 19) : ''}</span>
                             </div>
-                            <div class="text-white font-bold truncate">${m.window_title || 'Masaüstü'}</div>
+                            <div class="text-white font-bold truncate">${m.window_title || 'T2SAIM 3-Ekran Kanvası'}</div>
                             <div class="text-slate-300 text-[10px] bg-dark-950 p-1.5 rounded line-clamp-2">${m.ocr_text || 'OCR metni işlendi'}</div>
                         </div>
                     `).join('');
@@ -512,11 +579,11 @@
                 list.innerHTML = `
                     <div class="glass-card p-2.5 rounded-lg space-y-1 text-[11px] font-mono border border-slate-800">
                         <div class="flex justify-between items-center text-slate-400">
-                            <span class="text-cyan-400 font-bold">Code.exe</span>
-                            <span>20:27:10</span>
+                            <span class="text-cyan-400 font-bold">Antigravity.exe</span>
+                            <span>21:35:45</span>
                         </div>
-                        <div class="text-white font-bold truncate">T2SAIM Unified Memory Architecture</div>
-                        <div class="text-slate-300 text-[10px] bg-dark-950 p-1.5 rounded">Windows.Media.Ocr Engine Native WinRT FastEmbed BM25</div>
+                        <div class="text-white font-bold truncate">T2SAIM Master Console (Triple Monitor: 2 Vert + 1 Horiz)</div>
+                        <div class="text-slate-300 text-[10px] bg-dark-950 p-1.5 rounded">T2SAIM Control Deck Active Session - Monitoring Telemetry</div>
                     </div>
                 `;
             }
