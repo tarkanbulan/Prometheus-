@@ -389,7 +389,7 @@
             handleSend(new Event('submit'));
         }
 
-        async function handleSend(e) {
+                async function handleSend(e) {
             e.preventDefault();
             const input = document.getElementById('queryInput');
             const q = input.value.trim();
@@ -401,9 +401,9 @@
 
             // 1. Kullanıcı Balonu
             chat.innerHTML += `
-                <div class="chat-bubble-user p-3.5 rounded-2xl space-y-1 ml-auto max-w-[85%] text-right">
+                <div class="chat-bubble-user p-3.5 rounded-2xl space-y-1 ml-auto max-w-[85%] text-right shadow-lg">
                     <div class="text-[10px] font-mono text-cyan-400 font-bold">KAPTAN TARCO</div>
-                    <div class="text-white font-sans">${q}</div>
+                    <div class="text-white font-sans text-xs">${q}</div>
                 </div>
             `;
             input.value = "";
@@ -412,8 +412,8 @@
             // 2. Yükleniyor Göstergesi
             const loadId = "load_" + Date.now();
             chat.innerHTML += `
-                <div id="${loadId}" class="chat-bubble-ai p-3 rounded-2xl max-w-[85%] text-slate-400 font-mono text-xs flex items-center gap-2">
-                    <span class="animate-spin text-purple-400">⚡</span> ${modelName} üzerinden 3 ekran ve MCP hafıza katmanları (DuckDB, GBRAIN, NotebookLM) taranıyor...
+                <div id="${loadId}" class="chat-bubble-ai p-3.5 rounded-2xl max-w-[85%] text-slate-400 font-mono text-xs flex items-center gap-2 border border-purple-500/30 bg-dark-950/80 animate-pulse">
+                    <span class="text-purple-400">⚡</span> ${modelName} üzerinden 8 hafıza katmanı (Spock 364MB, Hermes 922MB, Picard 750MB, DuckDB OCR) taranıyor...
                 </div>
             `;
             chat.scrollTop = chat.scrollHeight;
@@ -430,67 +430,24 @@
                 const loadEl = document.getElementById(loadId);
                 if (loadEl) loadEl.remove();
 
-                let answerHtml = `
-                    <div class="text-slate-200 font-sans leading-relaxed whitespace-pre-wrap">
-                        ${data.answer || 'Sorgunuza dair adli kanıt bulunamadı.'}
-                    </div>
-                    <div class="text-[10px] font-mono text-slate-500 pt-1 border-t border-slate-800/60 flex justify-between">
-                        <span>Model: <strong>${modelName}</strong></span>
-                        <span>Taranan Katmanlar: <strong>Spock (364MB), Hermes (922MB), Picard (750MB), 3-Ekran OCR</strong></span>
-                    </div>
-                `;
+                const answerText = data.answer || 'Sorgunuza dair adli kanıt bulunamadı.';
+                const formattedHtml = answerText.replace(/
+/g, '<br>');
 
                 chat.innerHTML += `
-                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[95%] border-purple-500/20 bg-dark-900/90 shadow-xl">
-                        <div class="flex items-center gap-2 text-purple-300 font-mono font-bold text-[11px]">
+                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[95%] border-purple-500/30 bg-dark-900/95 shadow-xl">
+                        <div class="flex items-center gap-2 text-purple-300 font-mono font-bold text-[11px] border-b border-slate-800/80 pb-1.5">
                             <span>${document.getElementById('activeAiAvatar').innerText}</span>
                             <span>${modelName}</span>
-                            <span class="text-slate-500">· [Doğrulandı: Veritas Per Se]</span>
+                            <span class="text-slate-500 font-normal">· [Doğrulandı: Veritas Per Se]</span>
                         </div>
-                        ${answerHtml}
-                    </div>
-                `;
-                chat.scrollTop = chat.scrollHeight;
-                return;
-                const data = await res.json();
-                
-                const loadEl = document.getElementById(loadId);
-                if (loadEl) loadEl.remove();
-
-                let answerHtml = "";
-                if (data.results && data.results.length > 0) {
-                    const match = data.results[0];
-                    answerHtml = `
-                        <p class="text-slate-200 font-sans leading-relaxed">
-                            <strong>[${modelName} Sentezi]:</strong> 3 Ekranlı görsel hafızada (<strong>${match.app_name}</strong> - <em>${match.window_title}</em>) eşleşen adli kayıt bulundu:
-                        </p>
-                        <div class="bg-dark-950 p-2.5 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300">
-                            "${match.ocr_text || 'OCR metni eşleşti'}"
+                        <div class="text-slate-200 font-sans leading-relaxed text-xs">
+                            ${formattedHtml}
                         </div>
-                        <div class="text-[10px] font-mono text-slate-500">
-                            Zaman Damgası: ${match.timestamp} · Dosya: ${match.frame_path}
+                        <div class="text-[10px] font-mono text-slate-500 pt-1.5 border-t border-slate-800/60 flex justify-between">
+                            <span>Model: <strong>${modelName}</strong></span>
+                            <span>Kaynaklar: <strong>Spock (364MB), Hermes (922MB), Picard (750MB), 3-Ekran OCR</strong></span>
                         </div>
-                    `;
-                } else {
-                    answerHtml = `
-                        <p class="text-slate-200 font-sans leading-relaxed">
-                            <strong>[${modelName} Yanıtı]:</strong> Sorgunuz ("<strong>${q}</strong>") GBRAIN transcript indekslerinde ve NotebookLM defterlerinde analiz edildi. 
-                            İlgili kavram <em>t2saim_ltm_graph.db</em> ontolojik grafında adli düğüm olarak kayıtlıdır.
-                        </p>
-                        <div class="text-[10px] font-mono text-slate-400 bg-dark-950 p-2 rounded">
-                            Motor: ${modelName} · MCP Protokolü: Port 3456 / Port 8001 · 3-Ekran Kanvası: Aktif
-                        </div>
-                    `;
-                }
-
-                chat.innerHTML += `
-                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[90%] border-purple-500/20">
-                        <div class="flex items-center gap-2 text-purple-300 font-mono font-bold text-[11px]">
-                            <span>${document.getElementById('activeAiAvatar').innerText}</span>
-                            <span>${modelName}</span>
-                            <span class="text-slate-500">· [Doğrulandı: Veritas Per Se]</span>
-                        </div>
-                        ${answerHtml}
                     </div>
                 `;
                 chat.scrollTop = chat.scrollHeight;
@@ -500,11 +457,11 @@
                 if (loadEl) loadEl.remove();
 
                 chat.innerHTML += `
-                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[90%] border-red-500/30">
-                        <div class="text-red-400 font-mono font-bold text-[11px]">⚠️ İŞLEM CEVABI</div>
+                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[95%] border-red-500/30 bg-dark-900/90">
+                        <div class="text-red-400 font-mono font-bold text-[11px]">⚠️ HAFIZA KÖPRÜSÜ UYARISI</div>
                         <p class="text-slate-300 font-sans text-xs">
-                            Sorgunuz ${modelName} kurallarıyla çözümlendi: <strong>"${q}"</strong>. 
-                            (Port 8001 API servisiniz canlı DuckDB OCR sonuçlarını iletmektedir.)
+                            Port 8001 API köprüsüne bağlanılamadı: ${err.message}. 
+                            Lütfen arka planda <code>service_api.py</code> servisinin çalıştığından emin olun.
                         </p>
                     </div>
                 `;
