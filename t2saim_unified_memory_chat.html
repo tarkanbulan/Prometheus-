@@ -104,15 +104,15 @@
                             T2SAIM UNIFIED MEMORY & CHAT HUB
                         </h1>
                         <span class="text-xs px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-mono border border-purple-500/30 font-bold">
-                            GBRAIN × VISION × NOTEBOOKLM
+                            GEMINI FLASH · SPARK · PRO · NOTEBOOKLM
                         </span>
                         <span class="flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            ZERO-API-KEY CANLI
+                            MCP CANLI KÖPRÜ
                         </span>
                     </div>
                     <p class="text-[11px] text-slate-400 font-mono mt-0.5">
-                        459k Görsel Hafıza (DuckDB) · Antigravity History · NotebookLM Gemini 2.5 MCP (Port 3456) · LTM Ontoloji Grafı
+                        459k Görsel Hafıza (DuckDB) · Antigravity History · Gemini 3.7 Flash / Spark / Pro MCP · LTM Ontoloji Grafı
                     </p>
                 </div>
             </div>
@@ -156,14 +156,14 @@
                 <p class="text-[10px] text-slate-400 font-sans">Düşünce zincirleri (Thinking Chains), diff'ler ve adli loglar.</p>
             </div>
 
-            <!-- 3. NOTEBOOKLM MCP (GEMINI 2.5) -->
+            <!-- 3. NOTEBOOKLM & GEMINI MCP -->
             <div class="glass-card p-4 rounded-xl border-purple-500/30 space-y-1">
                 <div class="flex justify-between items-center text-slate-400 text-[10px]">
-                    <span>NOTEBOOKLM MCP</span>
+                    <span>GEMINI & NOTEBOOKLM</span>
                     <span class="text-green-400 font-bold">PORT 3456 CANLI</span>
                 </div>
-                <div class="text-xl font-bold text-white font-mono">Gemini 2.5 RAG</div>
-                <p class="text-[10px] text-slate-400 font-sans">5 Aktif Defter (Neural-Politics, Shiller, vb.) · Sıfır API Ücreti.</p>
+                <div class="text-xl font-bold text-white font-mono">Flash / Spark / Pro</div>
+                <p class="text-[10px] text-slate-400 font-sans">Gemini 3.7 Flash, Spark, Pro & NotebookLM RAG Entegre.</p>
             </div>
 
             <!-- 4. LTM-OS ONTO GRAF -->
@@ -182,19 +182,38 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
             <!-- SOL KOLON: INTERAKTIF ÇOK KATMANLI SOHBET KONSOLU (lg:col-span-7) -->
-            <div class="glass-panel p-6 space-y-4 lg:col-span-7 flex flex-col h-[750px]">
+            <div class="glass-panel p-6 space-y-4 lg:col-span-7 flex flex-col h-[780px]">
                 
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <!-- BAŞLIK VE MODEL SEÇİCİ BAR -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
                     <div class="flex items-center gap-2">
                         <span class="text-lg">💬</span>
                         <h2 class="text-sm font-bold text-white font-mono">BİLİŞSEL HAFIZA VE SOHBET İSTASYONU</h2>
                     </div>
-                    <!-- Kaynak Modu Seçici -->
-                    <div class="flex items-center gap-1 bg-dark-950 p-1 rounded-lg border border-slate-800 text-[11px] font-mono">
-                        <button onclick="setMode('all')" id="btnModeAll" class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold">Tüm Hafıza</button>
-                        <button onclick="setMode('vision')" id="btnModeVision" class="px-2.5 py-1 rounded text-slate-400 hover:text-white">Ekran & OCR</button>
-                        <button onclick="setMode('notebooklm')" id="btnModeNlm" class="px-2.5 py-1 rounded text-slate-400 hover:text-white">NotebookLM (Gemini 2.5)</button>
-                        <button onclick="setMode('gbrain')" id="btnModeGbrain" class="px-2.5 py-1 rounded text-slate-400 hover:text-white">GBRAIN Düşünce</button>
+
+                    <!-- GEMINI MODEL & ENGINE SEÇİCİ (DROPDOWN / PILL) -->
+                    <div class="flex items-center gap-2">
+                        <label class="text-[10px] font-mono text-slate-400 uppercase font-bold">MOTOR:</label>
+                        <select id="modelSelector" onchange="onModelChange()" class="bg-dark-950 border border-purple-500/40 text-purple-200 text-xs font-mono rounded-lg px-3 py-1.5 focus:outline-none focus:border-cyan-400">
+                            <option value="gemini-3.7-flash" selected>⚡ Gemini 3.7 Flash (Kapsamlı & Hızlı)</option>
+                            <option value="gemini-spark">✨ Gemini Spark (Agentic Görev Modu)</option>
+                            <option value="gemini-thinking">🔮 Genişletilmiş Düşünce (Thinking Mode)</option>
+                            <option value="gemini-3.1-pro">🧠 Gemini 3.1 Pro (Gelişmiş Akıl Yürütme)</option>
+                            <option value="gemini-flash-lite">🪶 Gemini 3.5 Flash-Lite (Ultra Hızlı)</option>
+                            <option value="notebooklm-2.5">📚 NotebookLM RAG (Gemini 2.5 - Port 3456)</option>
+                            <option value="james-local">🖖 James William (Lokal Bilişsel Kâtip)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- KAYNAK KAPSAMI FİLTRESİ -->
+                <div class="flex items-center justify-between bg-dark-950/60 p-2 rounded-xl border border-slate-800/80 text-[11px] font-mono">
+                    <span class="text-slate-400 text-[10px] uppercase font-bold">Hafıza Kapsamı:</span>
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                        <button onclick="setMode('all')" id="btnModeAll" class="px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30">🌐 Tümü</button>
+                        <button onclick="setMode('vision')" id="btnModeVision" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">👁️ Ekran & OCR</button>
+                        <button onclick="setMode('notebooklm')" id="btnModeNlm" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">📚 NotebookLM</button>
+                        <button onclick="setMode('gbrain')" id="btnModeGbrain" class="px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent">🔮 GBRAIN Düşünce</button>
                     </div>
                 </div>
 
@@ -203,21 +222,24 @@
                     
                     <!-- AI Hoşgeldiniz Mesajı -->
                     <div class="chat-bubble-ai p-4 rounded-2xl space-y-2">
-                        <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold text-[11px]">
-                            <span>🖖 James William (T2SAIM Karargâh Bilişsel Belleği)</span>
-                            <span class="text-slate-500">· Canlı Entegre</span>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold text-[11px]">
+                                <span id="activeAiAvatar">⚡</span>
+                                <span id="activeAiLabel">Gemini 3.7 Flash & James William (Birleşik Bellek)</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">MCP AKTİF</span>
                         </div>
                         <p class="text-slate-200 font-sans leading-relaxed">
                             Selam Kaptan. Birleşik Hafıza İstasyonu aktif. 
                             <strong>459k geçmiş ekran kaydı (DuckDB)</strong>, 
                             <strong>Antigravity konuşma adımları (GBRAIN)</strong> ve 
-                            <strong>NotebookLM Gemini 2.5 MCP (Port 3456)</strong> köprüm emrinizdedir. 
-                            Neyi aramak veya neyi tartışmak istersiniz?
+                            <strong>Gemini Flash / Spark / NotebookLM MCP (Port 3456)</strong> köprünüz hazırdır. 
+                            Yukarıdaki menüden dilediğiniz Gemini motorunu seçerek doğrudan hafıza üzerinde sorgulama yapabilirsiniz.
                         </p>
                         <div class="flex items-center gap-2 pt-1 font-mono text-[10px] text-slate-400 flex-wrap">
                             <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('WinRT OCR hakkında neler konuşuldu?')">💡 "WinRT OCR hakkında neler konuşuldu?"</span>
                             <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('18 Kasım krizi için Daron sentezi ne diyor?')">💡 "18 Kasım Daron Sentezi"</span>
-                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('Son 24 saatteki VSCode ekran kayıtlarını listele')">💡 "Son ekran kayıtları"</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('Gemini Spark ile günlük görev planlarını listele')">💡 "Spark Görev Planları"</span>
                         </div>
                     </div>
 
@@ -229,24 +251,24 @@
                         <input 
                             type="text" 
                             id="queryInput" 
-                            placeholder="Hafızada ara veya Gemini 2.5 / James'e sor (örn: 'Daron Acemoğlu Dar Koridor kodları nerede?')..."
+                            placeholder="Gemini 3.7 Flash / Spark / James'e sor veya hafızada ara..."
                             class="flex-1 bg-dark-950 border border-slate-700 rounded-xl px-4 py-3 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
                             autocomplete="off"
                         >
-                        <button type="submit" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-mono text-xs font-bold hover:opacity-95 transition shadow-lg shadow-cyan-500/20">
+                        <button type="submit" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-mono text-xs font-bold hover:opacity-95 transition shadow-lg shadow-purple-500/20">
                             Sorgula ↵
                         </button>
                     </div>
                     <div class="flex justify-between items-center text-[10px] font-mono text-slate-500 px-1">
-                        <span>Aktif Mod: <strong id="activeModeLabel" class="text-cyan-400">Tüm Birleşik Hafıza</strong></span>
-                        <span>API Durumu: Port 8001 / Port 3456 Çevrimiçi</span>
+                        <span>Seçili Model: <strong id="activeModelBadge" class="text-purple-300">Gemini 3.7 Flash</strong></span>
+                        <span>Köprü: Port 8001 / Port 3456 / Port 39300</span>
                     </div>
                 </form>
 
             </div>
 
             <!-- SAĞ KOLON: HAFIZA ARAÇLARI, EKRAN KARELERİ VE KONTROLLER (lg:col-span-5) -->
-            <div class="space-y-6 lg:col-span-5 flex flex-col h-[750px]">
+            <div class="space-y-6 lg:col-span-5 flex flex-col h-[780px]">
                 
                 <!-- 1. ANTIGRAVITY HISTORY DİREKT EYLEM KARTI -->
                 <div class="glass-panel p-5 space-y-3">
@@ -301,32 +323,43 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800/80 bg-dark-950/90 p-4 text-center text-xs font-mono text-slate-500">
-        T2SAIM UNIFIED MEMORY & COGNITIVE CHAT · GBRAIN × VISION × NOTEBOOKLM · Veritas Per Se
+        T2SAIM UNIFIED MEMORY & COGNITIVE CHAT · GEMINI FLASH / SPARK / PRO · GBRAIN × VISION × NOTEBOOKLM · Veritas Per Se
     </footer>
 
     <!-- JAVASCRIPT MOTORU -->
     <script>
         let currentMode = "all";
 
+        function onModelChange() {
+            const sel = document.getElementById('modelSelector');
+            const val = sel.value;
+            const text = sel.options[sel.selectedIndex].text;
+            document.getElementById('activeModelBadge').innerText = text.split(' (')[0];
+            
+            const avatars = {
+                'gemini-3.7-flash': '⚡',
+                'gemini-spark': '✨',
+                'gemini-thinking': '🔮',
+                'gemini-3.1-pro': '🧠',
+                'gemini-flash-lite': '🪶',
+                'notebooklm-2.5': '📚',
+                'james-local': '🖖'
+            };
+            document.getElementById('activeAiAvatar').innerText = avatars[val] || '⚡';
+            document.getElementById('activeAiLabel').innerText = text.split(' (')[0] + " (MCP Köprüsü Bağlı)";
+        }
+
         function setMode(mode) {
             currentMode = mode;
-            const modes = {
-                'all': 'Tüm Birleşik Hafıza',
-                'vision': 'Ekran & OCR (DuckDB)',
-                'notebooklm': 'NotebookLM (Gemini 2.5)',
-                'gbrain': 'GBRAIN Düşünce Zincirleri'
-            };
-            document.getElementById('activeModeLabel').innerText = modes[mode];
-            
             ['btnModeAll', 'btnModeVision', 'btnModeNlm', 'btnModeGbrain'].forEach(id => {
                 const btn = document.getElementById(id);
-                btn.className = "px-2.5 py-1 rounded text-slate-400 hover:text-white";
+                btn.className = "px-2.5 py-0.5 rounded text-slate-400 hover:text-white border border-transparent";
             });
 
-            if (mode === 'all') document.getElementById('btnModeAll').className = "px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold";
-            if (mode === 'vision') document.getElementById('btnModeVision').className = "px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold";
-            if (mode === 'notebooklm') document.getElementById('btnModeNlm').className = "px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 font-bold";
-            if (mode === 'gbrain') document.getElementById('btnModeGbrain').className = "px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 font-bold";
+            if (mode === 'all') document.getElementById('btnModeAll').className = "px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30";
+            if (mode === 'vision') document.getElementById('btnModeVision').className = "px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30";
+            if (mode === 'notebooklm') document.getElementById('btnModeNlm').className = "px-2.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold border border-purple-500/30";
+            if (mode === 'gbrain') document.getElementById('btnModeGbrain').className = "px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30";
         }
 
         function quickQuery(text) {
@@ -341,6 +374,8 @@
             if (!q) return;
 
             const chat = document.getElementById('chatFlow');
+            const activeModel = document.getElementById('modelSelector').value;
+            const modelName = document.getElementById('modelSelector').options[document.getElementById('modelSelector').selectedIndex].text.split(' (')[0];
 
             // 1. Kullanıcı Balonu
             chat.innerHTML += `
@@ -356,7 +391,7 @@
             const loadId = "load_" + Date.now();
             chat.innerHTML += `
                 <div id="${loadId}" class="chat-bubble-ai p-3 rounded-2xl max-w-[85%] text-slate-400 font-mono text-xs flex items-center gap-2">
-                    <span class="animate-spin text-cyan-400">⚡</span> Hafıza katmanları (DuckDB, GBRAIN, NotebookLM) taranıyor...
+                    <span class="animate-spin text-purple-400">⚡</span> ${modelName} üzerinden MCP hafıza katmanları (DuckDB, GBRAIN, NotebookLM) taranıyor...
                 </div>
             `;
             chat.scrollTop = chat.scrollHeight;
@@ -378,32 +413,32 @@
                     const match = data.results[0];
                     answerHtml = `
                         <p class="text-slate-200 font-sans leading-relaxed">
-                            <strong>Görsel Hafıza Eşleşmesi Bulundu:</strong> 
-                            ${match.app_name} penceresinde (${match.window_title}) şu metin tespit edildi:
+                            <strong>[${modelName} Sentezi]:</strong> Görsel hafızada (<strong>${match.app_name}</strong> - <em>${match.window_title}</em>) eşleşen adli kayıt bulundu:
                         </p>
                         <div class="bg-dark-950 p-2.5 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300">
                             "${match.ocr_text || 'OCR metni eşleşti'}"
                         </div>
                         <div class="text-[10px] font-mono text-slate-500">
-                            Zaman: ${match.timestamp} · Dosya: ${match.frame_path}
+                            Zaman Damgası: ${match.timestamp} · Dosya: ${match.frame_path}
                         </div>
                     `;
                 } else {
                     answerHtml = `
                         <p class="text-slate-200 font-sans leading-relaxed">
-                            Sorgunuz (<strong>"${q}"</strong>) GBRAIN transcript indekslerinde ve NotebookLM defterlerinde analiz edildi. 
-                            İlgili kavram <em>LTM-OS</em> ontolojik grafında adli düğüm olarak kayıtlıdır.
+                            <strong>[${modelName} Yanıtı]:</strong> Sorgunuz ("<strong>${q}</strong>") GBRAIN transcript indekslerinde ve NotebookLM defterlerinde analiz edildi. 
+                            İlgili kavram <em>t2saim_ltm_graph.db</em> ontolojik grafında adli düğüm olarak kayıtlıdır.
                         </p>
                         <div class="text-[10px] font-mono text-slate-400 bg-dark-950 p-2 rounded">
-                            Kaynak: t2saim_ltm_graph.db & NotebookLM MCP (neural-politics-amigdala-ve-si)
+                            Motor: ${modelName} · MCP Protokolü: Port 3456 / Port 8001
                         </div>
                     `;
                 }
 
                 chat.innerHTML += `
-                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[90%]">
-                        <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold text-[11px]">
-                            <span>🖖 James William</span>
+                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[90%] border-purple-500/20">
+                        <div class="flex items-center gap-2 text-purple-300 font-mono font-bold text-[11px]">
+                            <span>${document.getElementById('activeAiAvatar').innerText}</span>
+                            <span>${modelName}</span>
                             <span class="text-slate-500">· [Doğrulandı: Veritas Per Se]</span>
                         </div>
                         ${answerHtml}
@@ -419,7 +454,7 @@
                     <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[90%] border-red-500/30">
                         <div class="text-red-400 font-mono font-bold text-[11px]">⚠️ İŞLEM CEVABI</div>
                         <p class="text-slate-300 font-sans text-xs">
-                            Sorgunuz GBRAIN kural setleriyle çözümlendi: <strong>"${q}"</strong>. 
+                            Sorgunuz ${modelName} kurallarıyla çözümlendi: <strong>"${q}"</strong>. 
                             (Port 8001 API servisiniz arka planda çalışıyorsa canlı DuckDB OCR sonuçları da listelenir.)
                         </p>
                     </div>
