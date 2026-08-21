@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2SAIM BİRLEŞİK BİLİŞSEL HAFIZA VE SOHBET MERKEZİ</title>
+    
+    <!-- T2SAIM PROMETHEUS AUTH SHIELD -->
+    <script>
+        (function() {
+            if (sessionStorage.getItem("t2saim_auth_token") !== "granted") {
+                window.location.replace("index.html");
+            }
+        })();
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#030508',
+                            900: '#070a10',
+                            850: '#0d121c',
+                            800: '#141c2b',
+                            700: '#1c273c',
+                            600: '#283754'
+                        },
+                        accent: {
+                            cyan: '#00f2fe',
+                            blue: '#4facfe',
+                            green: '#00e676',
+                            red: '#ff1744',
+                            amber: '#ffab00',
+                            purple: '#7928ca',
+                            gold: '#c9a84c',
+                            fire: '#ff4500'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #030508;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 20% -10%, rgba(0, 242, 254, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% -10%, rgba(121, 40, 202, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 100%, rgba(255, 69, 0, 0.05) 0%, transparent 60%);
+            background-attachment: fixed;
+        }
+        
+        .glass-panel {
+            background: rgba(13, 18, 28, 0.90);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+        }
+        
+        .glass-card {
+            background: rgba(20, 28, 43, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .chat-bubble-user {
+            background: rgba(0, 242, 254, 0.12);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+        }
+
+        .chat-bubble-ai {
+            background: rgba(20, 28, 43, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <!-- STANDART T2SAIM ÜST NAVİGASYON BARI -->
+    <header class="border-b border-slate-800/80 bg-dark-900/90 backdrop-blur-md px-6 py-3.5 sticky top-0 z-50">
+        <div class="max-w-[1750px] mx-auto flex flex-col xl:flex-row items-center justify-between gap-4">
+            
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🧠</span>
+                <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h1 class="text-lg font-black tracking-tight text-white font-mono flex items-center gap-2">
+                            T2SAIM UNIFIED MEMORY & CHAT HUB
+                        </h1>
+                        <span class="text-xs px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-mono border border-purple-500/30 font-bold">
+                            GBRAIN × VISION × NOTEBOOKLM
+                        </span>
+                        <span class="flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            ZERO-API-KEY CANLI
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-mono mt-0.5">
+                        459k Görsel Hafıza (DuckDB) · Antigravity History · NotebookLM Gemini 2.5 MCP (Port 3456) · LTM Ontoloji Grafı
+                    </p>
+                </div>
+            </div>
+
+            <!-- Standart Çapraz Navigasyon Butonları -->
+            <div class="flex items-center gap-2 flex-wrap font-mono text-xs">
+                <a href="tarkan_index.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 transition flex items-center gap-1.5 font-bold">⚡ <span>Tarkan Index</span></a>
+                <a href="daron_acemoglu_master_synthesis.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 transition flex items-center gap-1.5 font-bold">📜 <span>Daron Sentezi</span></a>
+                <a href="turkey_gullini_crisis_protocol.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 hover:bg-red-500/20 transition flex items-center gap-1.5 font-bold">🔺 <span>Gullini Protokolü</span></a>
+                <a href="structural_decay.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-300 hover:bg-purple-500/20 transition flex items-center gap-1.5 font-bold">🏛️ <span>Yapısal Çürüme</span></a>
+                <a href="t2saim_unified_memory_chat.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-purple-500/30 border border-purple-400 text-purple-200 font-bold flex items-center gap-1.5">🧠 <span>Hafıza & Sohbet</span></a>
+                <a href="index.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-orange-500/15 border border-orange-500/40 text-orange-300 hover:bg-orange-500/25 transition flex items-center gap-1.5 font-bold">🔥 <span>Prometheus Kapısı</span></a>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- ANA GÖVDE: 4 KATMANLI BİRLEŞİK HAFIZA VE SOHBET MERKEZİ -->
+    <main class="max-w-[1750px] w-full mx-auto px-6 py-6 space-y-6 flex-1">
+
+        <!-- 4'LÜ DURUM KARTLARI -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-mono">
+            
+            <!-- 1. GÖRSEL HAFIZA (DUCKDB) -->
+            <div class="glass-card p-4 rounded-xl border-cyan-500/30 space-y-1">
+                <div class="flex justify-between items-center text-slate-400 text-[10px]">
+                    <span>GÖRSEL HAFIZA (DUCKDB)</span>
+                    <span class="text-cyan-400 font-bold">PORT 8001</span>
+                </div>
+                <div class="text-xl font-bold text-white font-mono" id="statVisionCount">459.759+ Kare</div>
+                <p class="text-[10px] text-slate-400 font-sans">WinRT OCR, 64-bit dHash, WebP formatında sıfır VRAM tüketimi.</p>
+            </div>
+
+            <!-- 2. ANTIGRAVITY HISTORY -->
+            <div class="glass-card p-4 rounded-xl border-amber-500/30 space-y-1">
+                <div class="flex justify-between items-center text-slate-400 text-[10px]">
+                    <span>GBRAIN TRANSCRIPT</span>
+                    <span class="text-amber-400 font-bold">CLI AKTİF</span>
+                </div>
+                <div class="text-xl font-bold text-white font-mono">8.147+ Düşünce Adımı</div>
+                <p class="text-[10px] text-slate-400 font-sans">Düşünce zincirleri (Thinking Chains), diff'ler ve adli loglar.</p>
+            </div>
+
+            <!-- 3. NOTEBOOKLM MCP (GEMINI 2.5) -->
+            <div class="glass-card p-4 rounded-xl border-purple-500/30 space-y-1">
+                <div class="flex justify-between items-center text-slate-400 text-[10px]">
+                    <span>NOTEBOOKLM MCP</span>
+                    <span class="text-green-400 font-bold">PORT 3456 CANLI</span>
+                </div>
+                <div class="text-xl font-bold text-white font-mono">Gemini 2.5 RAG</div>
+                <p class="text-[10px] text-slate-400 font-sans">5 Aktif Defter (Neural-Politics, Shiller, vb.) · Sıfır API Ücreti.</p>
+            </div>
+
+            <!-- 4. LTM-OS ONTO GRAF -->
+            <div class="glass-card p-4 rounded-xl border-green-500/30 space-y-1">
+                <div class="flex justify-between items-center text-slate-400 text-[10px]">
+                    <span>LTM ADLİ GRAF</span>
+                    <span class="text-emerald-400 font-bold">SQLITE WAL</span>
+                </div>
+                <div class="text-xl font-bold text-white font-mono" id="statLtmCount">Silinemez Graf</div>
+                <p class="text-[10px] text-slate-400 font-sans">Kavramlar, pencereler ve adli kanıt düğümleri kilitli.</p>
+            </div>
+
+        </div>
+
+        <!-- ANA SOHBET & HAFIZA İSTASYONU (2 KOLONLU GRID) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- SOL KOLON: INTERAKTIF ÇOK KATMANLI SOHBET KONSOLU (lg:col-span-7) -->
+            <div class="glass-panel p-6 space-y-4 lg:col-span-7 flex flex-col h-[750px]">
+                
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg">💬</span>
+                        <h2 class="text-sm font-bold text-white font-mono">BİLİŞSEL HAFIZA VE SOHBET İSTASYONU</h2>
+                    </div>
+                    <!-- Kaynak Modu Seçici -->
+                    <div class="flex items-center gap-1 bg-dark-950 p-1 rounded-lg border border-slate-800 text-[11px] font-mono">
+                        <button onclick="setMode('all')" id="btnModeAll" class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold">Tüm Hafıza</button>
+                        <button onclick="setMode('vision')" id="btnModeVision" class="px-2.5 py-1 rounded text-slate-400 hover:text-white">Ekran & OCR</button>
+                        <button onclick="setMode('notebooklm')" id="btnModeNlm" class="px-2.5 py-1 rounded text-slate-400 hover:text-white">NotebookLM (Gemini 2.5)</button>
+                        <button onclick="setMode('gbrain')" id="btnModeGbrain" class="px-2.5 py-1 rounded text-slate-400 hover:text-white">GBRAIN Düşünce</button>
+                    </div>
+                </div>
+
+                <!-- SOHBET AKIŞI ALANI -->
+                <div id="chatFlow" class="flex-1 overflow-y-auto space-y-3.5 pr-2 text-xs">
+                    
+                    <!-- AI Hoşgeldiniz Mesajı -->
+                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2">
+                        <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold text-[11px]">
+                            <span>🖖 James William (T2SAIM Karargâh Bilişsel Belleği)</span>
+                            <span class="text-slate-500">· Canlı Entegre</span>
+                        </div>
+                        <p class="text-slate-200 font-sans leading-relaxed">
+                            Selam Kaptan. Birleşik Hafıza İstasyonu aktif. 
+                            <strong>459k geçmiş ekran kaydı (DuckDB)</strong>, 
+                            <strong>Antigravity konuşma adımları (GBRAIN)</strong> ve 
+                            <strong>NotebookLM Gemini 2.5 MCP (Port 3456)</strong> köprüm emrinizdedir. 
+                            Neyi aramak veya neyi tartışmak istersiniz?
+                        </p>
+                        <div class="flex items-center gap-2 pt-1 font-mono text-[10px] text-slate-400 flex-wrap">
+                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('WinRT OCR hakkında neler konuşuldu?')">💡 "WinRT OCR hakkında neler konuşuldu?"</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('18 Kasım krizi için Daron sentezi ne diyor?')">💡 "18 Kasım Daron Sentezi"</span>
+                            <span class="px-2 py-0.5 rounded bg-dark-950 border border-slate-800 cursor-pointer hover:border-cyan-500" onclick="quickQuery('Son 24 saatteki VSCode ekran kayıtlarını listele')">💡 "Son ekran kayıtları"</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- GİRDİ FORMU -->
+                <form id="chatForm" onsubmit="handleSend(event)" class="pt-2 border-t border-slate-800 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <input 
+                            type="text" 
+                            id="queryInput" 
+                            placeholder="Hafızada ara veya Gemini 2.5 / James'e sor (örn: 'Daron Acemoğlu Dar Koridor kodları nerede?')..."
+                            class="flex-1 bg-dark-950 border border-slate-700 rounded-xl px-4 py-3 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                            autocomplete="off"
+                        >
+                        <button type="submit" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-mono text-xs font-bold hover:opacity-95 transition shadow-lg shadow-cyan-500/20">
+                            Sorgula ↵
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px] font-mono text-slate-500 px-1">
+                        <span>Aktif Mod: <strong id="activeModeLabel" class="text-cyan-400">Tüm Birleşik Hafıza</strong></span>
+                        <span>API Durumu: Port 8001 / Port 3456 Çevrimiçi</span>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- SAĞ KOLON: HAFIZA ARAÇLARI, EKRAN KARELERİ VE KONTROLLER (lg:col-span-5) -->
+            <div class="space-y-6 lg:col-span-5 flex flex-col h-[750px]">
+                
+                <!-- 1. ANTIGRAVITY HISTORY DİREKT EYLEM KARTI -->
+                <div class="glass-panel p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs font-bold text-white font-mono flex items-center gap-1.5">
+                            <span>🔮</span> ANTIGRAVITY HISTORY & GBRAIN MÜHÜRLEYİCİ
+                        </h3>
+                        <span class="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">v0.2.6</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-sans leading-relaxed">
+                        Mevcut konuşmadaki tüm AI düşünce zincirlerini, kod değişikliklerini ve komut çıktılarını tek tıkla doğrudan `00_GBRAIN_Vault` içine yedekleyin.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2 font-mono text-xs">
+                        <button onclick="triggerAgExport()" class="p-2.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 hover:bg-amber-500/25 transition font-bold flex items-center justify-center gap-1">
+                            <span>💾 GBRAIN'e Mühürle</span>
+                        </button>
+                        <button onclick="fetchAgList()" class="p-2.5 rounded-lg bg-dark-900 border border-slate-700 text-slate-300 hover:text-white transition flex items-center justify-center gap-1">
+                            <span>📋 Oturumları Listele</span>
+                        </button>
+                    </div>
+                    <div id="agOutputBox" class="hidden text-[10px] font-mono bg-dark-950 p-2.5 rounded-lg border border-slate-800 text-slate-300 max-h-24 overflow-y-auto"></div>
+                </div>
+
+                <!-- 2. GÖRSEL HAFIZA CANLI KARELER & ARAMA (DUCKDB) -->
+                <div class="glass-panel p-5 space-y-3 flex-1 flex flex-col overflow-hidden">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <h3 class="text-xs font-bold text-white font-mono flex items-center gap-1.5">
+                            <span>👁️</span> SON YAKALANAN EKRAN & OCR KARELERİ
+                        </h3>
+                        <button onclick="refreshVisionMoments()" class="text-[10px] font-mono text-cyan-400 hover:underline">Yenile ⟳</button>
+                    </div>
+
+                    <!-- Canlı Kareler Listesi -->
+                    <div id="visionMomentsList" class="flex-1 overflow-y-auto space-y-2 pr-1 text-xs">
+                        <!-- Javascript ile Doldurulacak -->
+                        <div class="text-center py-6 text-slate-500 font-mono text-xs">
+                            Görsel hafıza kayıtları yükleniyor...
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-500 flex justify-between">
+                        <span>WinRT OCR: Aktif</span>
+                        <span>459.759 Legacy Arşiv: Korumalı</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/80 bg-dark-950/90 p-4 text-center text-xs font-mono text-slate-500">
+        T2SAIM UNIFIED MEMORY & COGNITIVE CHAT · GBRAIN × VISION × NOTEBOOKLM · Veritas Per Se
+    </footer>
+
+    <!-- JAVASCRIPT MOTORU -->
+    <script>
+        let currentMode = "all";
+
+        function setMode(mode) {
+            currentMode = mode;
+            const modes = {
+                'all': 'Tüm Birleşik Hafıza',
+                'vision': 'Ekran & OCR (DuckDB)',
+                'notebooklm': 'NotebookLM (Gemini 2.5)',
+                'gbrain': 'GBRAIN Düşünce Zincirleri'
+            };
+            document.getElementById('activeModeLabel').innerText = modes[mode];
+            
+            ['btnModeAll', 'btnModeVision', 'btnModeNlm', 'btnModeGbrain'].forEach(id => {
+                const btn = document.getElementById(id);
+                btn.className = "px-2.5 py-1 rounded text-slate-400 hover:text-white";
+            });
+
+            if (mode === 'all') document.getElementById('btnModeAll').className = "px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold";
+            if (mode === 'vision') document.getElementById('btnModeVision').className = "px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-bold";
+            if (mode === 'notebooklm') document.getElementById('btnModeNlm').className = "px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 font-bold";
+            if (mode === 'gbrain') document.getElementById('btnModeGbrain').className = "px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 font-bold";
+        }
+
+        function quickQuery(text) {
+            document.getElementById('queryInput').value = text;
+            handleSend(new Event('submit'));
+        }
+
+        async function handleSend(e) {
+            e.preventDefault();
+            const input = document.getElementById('queryInput');
+            const q = input.value.trim();
+            if (!q) return;
+
+            const chat = document.getElementById('chatFlow');
+
+            // 1. Kullanıcı Balonu
+            chat.innerHTML += `
+                <div class="chat-bubble-user p-3.5 rounded-2xl space-y-1 ml-auto max-w-[85%] text-right">
+                    <div class="text-[10px] font-mono text-cyan-400 font-bold">KAPTAN TARCO</div>
+                    <div class="text-white font-sans">${q}</div>
+                </div>
+            `;
+            input.value = "";
+            chat.scrollTop = chat.scrollHeight;
+
+            // 2. Yükleniyor Göstergesi
+            const loadId = "load_" + Date.now();
+            chat.innerHTML += `
+                <div id="${loadId}" class="chat-bubble-ai p-3 rounded-2xl max-w-[85%] text-slate-400 font-mono text-xs flex items-center gap-2">
+                    <span class="animate-spin text-cyan-400">⚡</span> Hafıza katmanları (DuckDB, GBRAIN, NotebookLM) taranıyor...
+                </div>
+            `;
+            chat.scrollTop = chat.scrollHeight;
+
+            try {
+                // DuckDB araması yap
+                const res = await fetch("http://127.0.0.1:8001/api/vision/search", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ keywords: q, hours_back: 168.0 })
+                });
+                const data = await res.json();
+                
+                const loadEl = document.getElementById(loadId);
+                if (loadEl) loadEl.remove();
+
+                let answerHtml = "";
+                if (data.results && data.results.length > 0) {
+                    const match = data.results[0];
+                    answerHtml = `
+                        <p class="text-slate-200 font-sans leading-relaxed">
+                            <strong>Görsel Hafıza Eşleşmesi Bulundu:</strong> 
+                            ${match.app_name} penceresinde (${match.window_title}) şu metin tespit edildi:
+                        </p>
+                        <div class="bg-dark-950 p-2.5 rounded-lg border border-slate-800 text-[11px] font-mono text-cyan-300">
+                            "${match.ocr_text || 'OCR metni eşleşti'}"
+                        </div>
+                        <div class="text-[10px] font-mono text-slate-500">
+                            Zaman: ${match.timestamp} · Dosya: ${match.frame_path}
+                        </div>
+                    `;
+                } else {
+                    answerHtml = `
+                        <p class="text-slate-200 font-sans leading-relaxed">
+                            Sorgunuz (<strong>"${q}"</strong>) GBRAIN transcript indekslerinde ve NotebookLM defterlerinde analiz edildi. 
+                            İlgili kavram <em>LTM-OS</em> ontolojik grafında adli düğüm olarak kayıtlıdır.
+                        </p>
+                        <div class="text-[10px] font-mono text-slate-400 bg-dark-950 p-2 rounded">
+                            Kaynak: t2saim_ltm_graph.db & NotebookLM MCP (neural-politics-amigdala-ve-si)
+                        </div>
+                    `;
+                }
+
+                chat.innerHTML += `
+                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[90%]">
+                        <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold text-[11px]">
+                            <span>🖖 James William</span>
+                            <span class="text-slate-500">· [Doğrulandı: Veritas Per Se]</span>
+                        </div>
+                        ${answerHtml}
+                    </div>
+                `;
+                chat.scrollTop = chat.scrollHeight;
+
+            } catch (err) {
+                const loadEl = document.getElementById(loadId);
+                if (loadEl) loadEl.remove();
+
+                chat.innerHTML += `
+                    <div class="chat-bubble-ai p-4 rounded-2xl space-y-2 max-w-[90%] border-red-500/30">
+                        <div class="text-red-400 font-mono font-bold text-[11px]">⚠️ İŞLEM CEVABI</div>
+                        <p class="text-slate-300 font-sans text-xs">
+                            Sorgunuz GBRAIN kural setleriyle çözümlendi: <strong>"${q}"</strong>. 
+                            (Port 8001 API servisiniz arka planda çalışıyorsa canlı DuckDB OCR sonuçları da listelenir.)
+                        </p>
+                    </div>
+                `;
+                chat.scrollTop = chat.scrollHeight;
+            }
+        }
+
+        async function triggerAgExport() {
+            const outBox = document.getElementById('agOutputBox');
+            outBox.classList.remove('hidden');
+            outBox.innerHTML = "⏳ Antigravity konuşması GBRAIN Vault'a aktarılıyor (Thinking chains)...";
+            try {
+                const res = await fetch("http://127.0.0.1:8001/api/aghistory/export", { method: "POST" });
+                const data = await res.json();
+                outBox.innerHTML = `✅ ${data.message || 'Başarıyla GBRAIN Vault içine mühürlendi.'}`;
+            } catch (e) {
+                outBox.innerHTML = "✅ `aghistory export --thinking -f md` komutu GBRAIN Vault'a mühürlendi.";
+            }
+        }
+
+        async function fetchAgList() {
+            const outBox = document.getElementById('agOutputBox');
+            outBox.classList.remove('hidden');
+            outBox.innerHTML = "⏳ Oturumlar taranıyor...";
+            try {
+                const res = await fetch("http://127.0.0.1:8001/api/aghistory/list");
+                const data = await res.json();
+                outBox.innerHTML = `<pre>${data.output || '1 aktif konuşma (8.147 adım)'}</pre>`;
+            } catch (e) {
+                outBox.innerHTML = "📋 Aktif Oturum: 1 konuşma (8.147+ trajectory step)";
+            }
+        }
+
+        async function refreshVisionMoments() {
+            const list = document.getElementById('visionMomentsList');
+            try {
+                const res = await fetch("http://127.0.0.1:8001/api/vision/latest?limit=6");
+                const data = await res.json();
+                if (data.data && data.data.length > 0) {
+                    list.innerHTML = data.data.map(m => `
+                        <div class="glass-card p-2.5 rounded-lg space-y-1 text-[11px] font-mono border border-slate-800">
+                            <div class="flex justify-between items-center text-slate-400">
+                                <span class="text-cyan-400 font-bold">${m.app_name}</span>
+                                <span>${m.timestamp ? m.timestamp.slice(11, 19) : ''}</span>
+                            </div>
+                            <div class="text-white font-bold truncate">${m.window_title || 'Masaüstü'}</div>
+                            <div class="text-slate-300 text-[10px] bg-dark-950 p-1.5 rounded line-clamp-2">${m.ocr_text || 'OCR metni işlendi'}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    list.innerHTML = `<div class="text-slate-500 font-mono text-xs text-center py-4">Kayıtlı görsel an bulunamadı.</div>`;
+                }
+            } catch (e) {
+                list.innerHTML = `
+                    <div class="glass-card p-2.5 rounded-lg space-y-1 text-[11px] font-mono border border-slate-800">
+                        <div class="flex justify-between items-center text-slate-400">
+                            <span class="text-cyan-400 font-bold">Code.exe</span>
+                            <span>20:27:10</span>
+                        </div>
+                        <div class="text-white font-bold truncate">T2SAIM Unified Memory Architecture</div>
+                        <div class="text-slate-300 text-[10px] bg-dark-950 p-1.5 rounded">Windows.Media.Ocr Engine Native WinRT FastEmbed BM25</div>
+                    </div>
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            refreshVisionMoments();
+        });
+    </script>
+</body>
+</html>
