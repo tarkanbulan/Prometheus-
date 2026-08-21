@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2SAIM PROMETHEUS — Güvenli Karargâh Giriş Portalı</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#030508',
+                            900: '#070a10',
+                            850: '#0d121c',
+                            800: '#141c2b',
+                            700: '#1c273c',
+                            600: '#283754'
+                        },
+                        accent: {
+                            cyan: '#00f2fe',
+                            blue: '#4facfe',
+                            green: '#00e676',
+                            red: '#ff1744',
+                            amber: '#ffab00',
+                            purple: '#7928ca',
+                            gold: '#c9a84c',
+                            fire: '#ff4500'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #030508;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% -20%, rgba(255, 69, 0, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 10% 100%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 90% 100%, rgba(0, 242, 254, 0.06) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+        
+        .glass-panel {
+            background: rgba(13, 18, 28, 0.88);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+        }
+        
+        .glass-card {
+            background: rgba(20, 28, 43, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 69, 0, 0.4);
+            box-shadow: 0 10px 30px -5px rgba(255, 69, 0, 0.2);
+        }
+
+        .glow-fire { box-shadow: 0 0 35px -5px rgba(255, 69, 0, 0.35); }
+        .glow-cyan { box-shadow: 0 0 30px -5px rgba(0, 242, 254, 0.25); }
+
+        .fire-text {
+            background: linear-gradient(135deg, #ff4500 0%, #ff8c00 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes flamePulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.04); opacity: 1; filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.6)); }
+        }
+        .flame-anim { animation: flamePulse 3s ease-in-out infinite; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-orange-500/30 selection:text-orange-200">
+
+    <!-- ÜST BİLGİ ŞERİDİ -->
+    <header class="border-b border-slate-800/80 bg-dark-900/90 backdrop-blur-md px-6 py-4">
+        <div class="max-w-[1500px] mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl flame-anim">🔥</span>
+                <div>
+                    <h1 class="text-lg font-black tracking-tight text-white font-mono flex items-center gap-2">
+                        T2SAIM PROMETHEUS
+                        <span class="text-xs px-2 py-0.5 rounded bg-orange-500/20 text-orange-400 font-mono border border-orange-500/30 font-bold">
+                            RESTRICTED ACCESS
+                        </span>
+                    </h1>
+                    <p class="text-[11px] text-slate-400 font-mono">
+                        Ateşi Tanrılardan Alan Bilgi · Sentetik Sisleri Dağıtan Hakikat · Veritas Per Se
+                    </p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-2 font-mono text-xs text-slate-400">
+                <span>GÜVENLİK DÜZEYİ:</span>
+                <span class="px-2.5 py-1 rounded bg-red-500/20 text-red-300 font-bold border border-red-500/40">
+                    SEALED KARARGÂH v3.0
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ANA MERKEZ: PROMETHEUS ŞİFRE KONSOLU & PANEL LİNKLERİ -->
+    <main class="max-w-[1200px] w-full mx-auto px-6 py-12 space-y-10 flex-1 flex flex-col justify-center">
+
+        <!-- PROMETHEUS BAŞLIK BLOĞU -->
+        <div class="text-center space-y-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-xs font-mono text-orange-400">
+                <span>⚡ BİLİŞSEL VE EKONOFİZİK ERKEN UYARI KARARGÂHI</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black font-mono tracking-tight text-white">
+                T2SAIM <span class="fire-text">PROMETHEUS</span>
+            </h2>
+            <p class="text-sm md:text-base text-slate-400 max-w-2xl mx-auto font-sans leading-relaxed">
+                "Prometheus, ateşi Olympos'tan insanlığa taşıdı; T2SAIM ise finansal simülasyonların ve kurumsal çürümenin ardındaki hakikati matematiğin ateşiyle aydınlatır."
+            </p>
+        </div>
+
+        <!-- ŞİFRE GİRİŞ KONSOLU (KİLİTLİ ALAN) -->
+        <div id="authBox" class="glass-panel p-8 max-w-md mx-auto w-full space-y-6 border-orange-500/40 glow-fire">
+            <div class="text-center space-y-1">
+                <div class="text-xs font-mono uppercase tracking-widest text-orange-400 font-bold">
+                    KARARGÂH KİMLİK DOĞRULAMA
+                </div>
+                <p class="text-xs text-slate-400">
+                    Sistemik kriz raporlarına ve veri terminallerine erişmek için şifrenizi giriniz.
+                </p>
+            </div>
+
+            <form id="loginForm" onsubmit="handleAuth(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1.5 font-bold">
+                        GÜVENLİK ANAHTARI (PASSPHRASE):
+                    </label>
+                    <input 
+                        type="password" 
+                        id="passInput" 
+                        placeholder="••••••••••••" 
+                        required
+                        autocomplete="off"
+                        class="w-full bg-dark-950/90 border border-slate-700 rounded-xl px-4 py-3 text-sm font-mono text-white placeholder-slate-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition"
+                    >
+                </div>
+
+                <div id="errorMsg" class="hidden text-xs font-mono text-red-400 bg-red-500/10 border border-red-500/30 p-2.5 rounded-lg text-center font-bold">
+                    ❌ GEÇERSİZ GÜVENLİK ANAHTARI. ERİŞİM REDDEDİLDİ.
+                </div>
+
+                <button 
+                    type="submit" 
+                    class="w-full py-3.5 rounded-xl bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 text-white font-mono text-xs font-bold uppercase tracking-wider hover:opacity-95 transition shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2"
+                >
+                    <span>🔓 Karargâha Giriş Yap</span>
+                </button>
+            </form>
+
+            <div class="text-[10px] font-mono text-slate-500 text-center">
+                Mission Albion · Epistemik Hijyen & Veritas Protokolü
+            </div>
+        </div>
+
+        <!-- AÇILAN KONTROL PANELİ (BAŞARILI GİRİŞTEN SONRA GÖRÜNÜR) -->
+        <div id="portalHub" class="hidden space-y-6">
+            <div class="text-center space-y-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/30 text-xs font-mono text-green-400 font-bold">
+                    <span>✅ ERİŞİM ONAYLANDI · T2SAIM KARARGÂHI ÇEVRİMİÇİ</span>
+                </div>
+                <h3 class="text-xl font-bold text-white font-mono">
+                    LÜTFEN İNCELEMEK İSTEDİĞİNİZ PLATFORMU SEÇİNİZ
+                </h3>
+            </div>
+
+            <!-- 4 ANA PLATFORM KARTI -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <!-- 1. TARKAN INDEX -->
+                <a href="tarkan_index.html" class="glass-card p-6 rounded-2xl border-cyan-500/30 space-y-3 block group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl">⚡</span>
+                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/40">
+                            ANA KRİZ PANOSU
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-cyan-300 transition font-mono">
+                            Tarco Crisis Index (T2SAIM v3.0 Master EWS)
+                        </h4>
+                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
+                            700 Günlük Çok Katmanlı Likidite Koridoru, 2M Merton Jump-Diffusion Simülasyonu, 18 Kasım Tekillik Analizi ve EMPI KLR Sinyalleri.
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-mono text-cyan-400 flex items-center gap-1 font-bold pt-1">
+                        <span>Terminali Başlat →</span>
+                    </div>
+                </a>
+
+                <!-- 2. DARON ACEMOĞLU SENTEZİ -->
+                <a href="daron_acemoglu_master_synthesis.html" class="glass-card p-6 rounded-2xl border-amber-500/30 space-y-3 block group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl">🏛️</span>
+                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40">
+                            NOBEL KURUMSAL SENTEZ
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-amber-300 transition font-mono">
+                            Daron Acemoğlu Kurumsal Ekonomi Sentezi
+                        </h4>
+                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
+                            Siyasal Gücün Oyun Teorisi (MPE), Dar Koridor Diferansiyel Faz Düzlemi, Ağ Şokları (Bonacich) ve Uluslararası IDIS Endeksi.
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-mono text-amber-400 flex items-center gap-1 font-bold pt-1">
+                        <span>Raporu İncele →</span>
+                    </div>
+                </a>
+
+                <!-- 3. EMILIO GULLINI KRİZ PROTOKOLÜ -->
+                <a href="turkey_gullini_crisis_protocol.html" class="glass-card p-6 rounded-2xl border-red-500/30 space-y-3 block group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl">🔺</span>
+                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-red-500/20 text-red-300 font-bold border border-red-500/40">
+                            EKONOFİZİK PROTOKOL
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-red-400 transition font-mono">
+                            Emilio Gullini Türkiye Kriz Protokolü
+                        </h4>
+                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
+                            5 Katmanlı Kriz Piramidi, REER Sarkaç Gerilimi, Faz Uzayı Kaotik Çöküş Çekicisi ve 6 Panelli Ekonofizik Gösterge Paneli.
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-mono text-red-400 flex items-center gap-1 font-bold pt-1">
+                        <span>Protokolü Aç →</span>
+                    </div>
+                </a>
+
+                <!-- 4. YAPISAL & TOPLUMSAL ÇÜRÜME RAPORU -->
+                <a href="structural_decay.html" class="glass-card p-6 rounded-2xl border-purple-500/30 space-y-3 block group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl">📊</span>
+                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold border border-purple-500/40">
+                            TOPLUMSAL & MALİ ÇÜRÜME
+                        </span>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-purple-300 transition font-mono">
+                            Yapısal, Mali & Toplumsal Çürüme Raporu
+                        </h4>
+                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
+                            17 İnteraktif Grafik, 10 Yıllık Vergi ve Varlık Afları, 160 Mr $ Londra Tahkim KÖİ Borcu, Şiddet & Narkotik İstatistikleri.
+                        </p>
+                    </div>
+                    <div class="text-[11px] font-mono text-purple-400 flex items-center gap-1 font-bold pt-1">
+                        <span>Analizi Gör →</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- Çıkış / Kilitle Butonu -->
+            <div class="text-center pt-4">
+                <button onclick="lockPortal()" class="px-4 py-2 rounded-lg bg-dark-900 border border-slate-800 text-xs font-mono text-slate-400 hover:text-white hover:border-slate-700 transition">
+                    🔒 Karargâhı Yeniden Kilitle (Güvenli Çıkış)
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/80 bg-dark-950/90 p-6 text-center text-xs font-mono text-slate-500">
+        T2SAIM PROMETHEUS · Ekonofizik & Bilişsel Kriz Karargâhı · Parola Korumalı Güvenli Giriş · Veritas Per Se
+    </footer>
+
+    <!-- JAVASCRIPT AUTH MOTORU -->
+    <script>
+        const AUTH_KEY = "t2saim_auth_token";
+        const VALID_PASS = "T2SAIM-2026";
+
+        function checkExistingAuth() {
+            if (sessionStorage.getItem(AUTH_KEY) === "granted") {
+                document.getElementById('authBox').classList.add('hidden');
+                document.getElementById('portalHub').classList.remove('hidden');
+            }
+        }
+
+        function handleAuth(e) {
+            e.preventDefault();
+            const enteredPass = document.getElementById('passInput').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (enteredPass === VALID_PASS) {
+                sessionStorage.setItem(AUTH_KEY, "granted");
+                errorMsg.classList.add('hidden');
+                document.getElementById('authBox').classList.add('hidden');
+                document.getElementById('portalHub').classList.remove('hidden');
+            } else {
+                errorMsg.classList.remove('hidden');
+                document.getElementById('passInput').value = "";
+                document.getElementById('passInput').focus();
+            }
+        }
+
+        function lockPortal() {
+            sessionStorage.removeItem(AUTH_KEY);
+            document.getElementById('portalHub').classList.add('hidden');
+            document.getElementById('authBox').classList.remove('hidden');
+            document.getElementById('passInput').value = "";
+        }
+
+        window.addEventListener('DOMContentLoaded', checkExistingAuth);
+    </script>
+</body>
+</html>

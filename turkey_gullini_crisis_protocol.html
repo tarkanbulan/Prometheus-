@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <!-- T2SAIM PROMETHEUS AUTH SHIELD -->
+    <script>
+        (function() {
+            if (sessionStorage.getItem("t2saim_auth_token") !== "granted") {
+                window.location.replace("index.html");
+            }
+        })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2SAIM — Türkiye Emilio Gullini Kriz Değerlendirme ve Ekonofizik Erken Uyarı Platformu</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com">
+        function openOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+        }
+        function closeOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+        }
+        
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#030508',
+                            900: '#070a10',
+                            850: '#0d121c',
+                            800: '#141c2b',
+                            700: '#1c273c',
+                            600: '#283754'
+                        },
+                        accent: {
+                            cyan: '#00f2fe',
+                            blue: '#4facfe',
+                            green: '#00e676',
+                            red: '#ff1744',
+                            amber: '#ffab00',
+                            purple: '#7928ca',
+                            gold: '#c9a84c'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    
+        function openOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+        }
+        function closeOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+        }
+        
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js & Plotly -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
+        function openOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+        }
+        function closeOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+        }
+        
+    </script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js">
+        function openOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+        }
+        function closeOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+        }
+        
+    </script>
+    
+    <!-- MathJax 3.2 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    
+        function openOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+        }
+        function closeOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+        }
+        
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        function openOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+        }
+        function closeOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+        }
+        
+    </script>
+    
+    <style>
+        body {
+            background-color: #030508;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 10% 0%, rgba(255, 23, 68, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 90% 100%, rgba(0, 242, 254, 0.06) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+        
+        .glass-panel {
+            background: rgba(13, 18, 28, 0.92);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 0.85rem;
+        }
+        
+        .glass-card {
+            background: rgba(20, 28, 43, 0.78);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 23, 68, 0.4);
+            box-shadow: 0 8px 25px -5px rgba(255, 23, 68, 0.15);
+        }
+
+        .glow-red { box-shadow: 0 0 30px -5px rgba(255, 23, 68, 0.35); }
+        .glow-cyan { box-shadow: 0 0 30px -5px rgba(0, 242, 254, 0.30); }
+        .glow-amber { box-shadow: 0 0 30px -5px rgba(255, 171, 0, 0.30); }
+
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: #030508; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-red-500/30 selection:text-red-200">
+
+    <!-- ÜST NAVİGASYON BARI -->
+        <!-- STANDART T2SAIM ÜST NAVİGASYON BARI -->
+    <header class="border-b border-slate-800/80 bg-dark-900/90 backdrop-blur-md px-6 py-3.5 sticky top-0 z-50">
+        <div class="max-w-[1750px] mx-auto flex flex-col xl:flex-row items-center justify-between gap-4">
+            
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🖖</span>
+                <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h1 class="text-lg font-black tracking-tight text-white font-mono flex items-center gap-2">
+                            T2SAIM × EMILIO GULLINI
+                        </h1>
+                        <span class="text-xs px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono border border-amber-500/30 font-bold">
+                            CI: 0.76 (KIRMIZI FAZ)
+                        </span>
+                        <span class="flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            CANLI TELEMETRİ
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-mono mt-0.5">
+                        5 Katmanlı Piramit · Ekonofizik Sarkaç ($	heta_{	ext{REER}}$) · Minsky Tekilliği ($t^*$) · Güvensizlik ($G_{	ext{def}}$)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Standart Çapraz Navigasyon Butonları -->
+            <div class="flex items-center gap-2 flex-wrap font-mono text-xs">
+                <a href="tarkan_index.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-cyan-500/10 border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 border transition flex items-center gap-1.5 font-bold">⚡ <span>Tarkan Index</span></a>
+                <a href="daron_acemoglu_master_synthesis.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-amber-500/10 border-amber-500/30 text-amber-300 hover:bg-amber-500/20 border transition flex items-center gap-1.5 font-bold">📜 <span>Daron Sentezi</span></a>
+                <a href="turkey_gullini_crisis_protocol.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-red-500/30 border-red-400 text-red-200 border transition flex items-center gap-1.5 font-bold shadow-lg shadow-red-500/10">🔺 <span>Gullini Protokolü</span></a>
+                <a href="structural_decay.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-purple-500/10 border-purple-500/30 text-purple-300 hover:bg-purple-500/20 border transition flex items-center gap-1.5 font-bold shadow-lg shadow-purple-500/10">🏛️ <span>Yapısal Çürüme</span></a>
+                <button onclick="openOsintVerifiedModal()" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 transition flex items-center gap-1.5 font-bold shadow-lg shadow-cyan-500/10">🔍 <span>OSINT Doğrulama</span></button>
+                <a href="index.html" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-orange-500/15 border border-orange-500/40 text-orange-300 hover:bg-orange-500/25 transition flex items-center gap-1.5 font-bold">🔥 <span>Prometheus Kapısı</span></a>
+                <div class="text-xs font-mono text-slate-400 bg-dark-800 px-3 py-1.5 rounded-lg border border-slate-700/60 hidden 2xl:block">
+                    Son Veri: <strong class="text-white">21 Ağustos 2026</strong>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- ANA İÇERİK -->
+    <main class="max-w-[1750px] w-full mx-auto px-6 py-6 space-y-8 flex-1">
+
+        <!-- 1. BÖLÜM: 5 KATMANLI SİSTEMİK KRİZ ANALİZ PİRAMİDİ (TÜRKİYE TELEMETRİSİ) -->
+        <section class="glass-panel p-6 space-y-6 border-red-500/40 glow-red">
+            <div class="border-b border-slate-800 pb-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
+                <div>
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-red-400 font-bold">
+                        EMILIO GULLINI METHODOLOGY × TURKEY APPLICATION
+                    </span>
+                    <h2 class="text-lg font-black text-white font-mono mt-0.5 flex items-center gap-2">
+                        🔺 1. TÜRKİYE 5 KATMANLI SİSTEMİK KRİZ ANALİZ PİRAMİDİ (AĞUSTOS 2026)
+                    </h2>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-xs">
+                    <span class="px-3 py-1 rounded bg-red-500/20 text-red-300 font-bold border border-red-500/40">
+                        KRİZ TEKİLLİĞİ ($t^*$): 18 KASIM 2026
+                    </span>
+                </div>
+            </div>
+
+            <!-- PİRAMİT KATMANLARI -->
+            <div class="space-y-3 font-mono text-xs">
+                
+                <!-- KATMAN 5 -->
+                <div class="p-3.5 rounded-xl bg-purple-950/30 border border-purple-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                    <div class="space-y-0.5">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold">KATMAN 5</span>
+                        <div class="font-bold text-white text-sm">POLİTİKA KAPASİTESİ & KURUMSAL GÜVENİLİRLİK (Governance Deficit)</div>
+                        <div class="text-slate-400 font-sans text-[11px]">TCMB Hedef-Gerçekleşme Sapması (5x) · Yargı Güvencesi Skoru ($0.18$) · Faiz Yükü (Bütçenin %28.4'ü)</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-lg font-black text-purple-300">0.782 $G_{\text{def}}$</div>
+                        <div class="text-[10px] text-red-400 font-bold">GÜVEN EROZYONU ZİRVEDE</div>
+                    </div>
+                </div>
+
+                <!-- KATMAN 4 -->
+                <div class="p-3.5 rounded-xl bg-red-950/30 border border-red-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                    <div class="space-y-0.5">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-red-500/20 text-red-300 font-bold">KATMAN 4</span>
+                        <div class="font-bold text-white text-sm">DAVRANIŞSAL STRES & AMİGDALA YÜKÜ ($A_{\text{load}}$ & $M_t$)</div>
+                        <div class="text-slate-400 font-sans text-[11px]">Kuşaksal Amnezi Yarılanma Ömrü ($t_{1/2} = 4.62$ Yıl) · Kapalıçarşı Fiziki Makası (+0.80 ₺) · Efektif Dolarizasyon (%58.4)</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-lg font-black text-red-400">0.84 $A_{\text{load}}$</div>
+                        <div class="text-[10px] text-red-400 font-bold">BİLİŞSEL FREN ÇÖKÜŞÜ (PFC %16)</div>
+                    </div>
+                </div>
+
+                <!-- KATMAN 3 -->
+                <div class="p-3.5 rounded-xl bg-amber-950/30 border border-amber-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                    <div class="space-y-0.5">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">KATMAN 3</span>
+                        <div class="font-bold text-white text-sm">KARŞI TARAF GÜVENSİZLİĞİ & LİKİDİTE KİLİTLENMESİ (Interbank Distrust)</div>
+                        <div class="text-slate-400 font-sans text-[11px]">Türkiye TED Spread (+%3.4) · 5Y CDS Primi (270 $\to$ 450 bps Projeksiyon) · Kredi Güvensizlik Primi (+%14.2)</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-lg font-black text-amber-400">+14.2% Risk Primi</div>
+                        <div class="text-[10px] text-amber-400 font-bold">FONLAMA KORİDORU DARALMASI</div>
+                    </div>
+                </div>
+
+                <!-- KATMAN 2 -->
+                <div class="p-3.5 rounded-xl bg-dark-900 border border-slate-700 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                    <div class="space-y-0.5">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">KATMAN 2</span>
+                        <div class="font-bold text-white text-sm">BANKACILIK & HAYALET KREDİLER (Zombie Loans & BFI)</div>
+                        <div class="text-slate-400 font-sans text-[11px]">Kredi/Mevduat (LDR = 1.15) · Resmi NPL (%1.9) vs Hayalet Kredi (%4.7) · Vade Uyumsuzluğu (ALM Risk = 0.34)</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-lg font-black text-cyan-300">2.4x Makas</div>
+                        <div class="text-[10px] text-slate-400 font-bold">YÜZDÜRÜLEN BATIK KREDİLER</div>
+                    </div>
+                </div>
+
+                <!-- KATMAN 1 -->
+                <div class="p-3.5 rounded-xl bg-dark-900 border border-slate-700 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                    <div class="space-y-0.5">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-red-500/20 text-red-300 font-bold">KATMAN 1</span>
+                        <div class="font-bold text-white text-sm">MAKRO DENGESİZLİKLER & MİNSKY PONZİ İVMELENMESİ (Resonance)</div>
+                        <div class="text-slate-400 font-sans text-[11px]">REER Sarkacı ($	heta = 69.5$) · 1 Yıllık Dış Borç Servisi (191 Mr $) · Swap Hariç Net Rezervler (-$42.1 Mr $)</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-lg font-black text-red-400">$\Delta_{\text{Ponzi}} > 0$</div>
+                        <div class="text-[10px] text-red-400 font-bold">PARABOLİK BORÇ SERVİSİ ŞOKU</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. BÖLÜM: 6 STANDART GÖRSELLEŞTİRME PANELİ -->
+        <section class="space-y-6">
+            <div class="border-b border-slate-800 pb-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
+                <div>
+                    <h2 class="text-lg font-black text-white font-mono flex items-center gap-2">
+                        📊 2. TÜRKİYE 6 PANELLİ EKONOFİZİK DASHBOARD MİMARİSİ
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-0.5">
+                        Minsky Rezonansı, REER Sarkacı, Faz Uzayı Çekicisi, TED/CDS Barometresi, Hayalet Krediler ve Politika Çekiş Gücü
+                    </p>
+                </div>
+                <div class="text-xs font-mono text-cyan-400 bg-dark-800 px-3 py-1 rounded border border-slate-700">
+                    Kriz Skoru: <strong class="text-red-400">CI = 0.76 (KIRMIZI FAZ)</strong>
+                </div>
+            </div>
+
+            <!-- PANEL 1: TAM GENİŞLİK 700 GÜNLÜK MAKRO-REZONANS GRAFİĞİ -->
+            <div class="glass-panel p-5 space-y-3 border-red-500/30">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
+                    <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+                        📈 PANEL 1: [TAM GENİŞLİK] 700 GÜNLÜK MAKRO-REZONANS & MİNSKY BORÇ SERVİSİ GRAFİĞİ
+                    </h3>
+                    <div class="text-xs font-mono text-red-400 bg-dark-950 px-2.5 py-1 rounded border border-red-500/30 font-bold">
+                        ⚡ $t^*$ TEKİLLİK EŞİĞİ: 18 KASIM 2026
+                    </div>
+                </div>
+                <div class="h-[320px] w-full relative">
+                    <canvas id="gulliniMacroResonanceChart"></canvas>
+                </div>
+                <div class="text-[11px] font-mono text-slate-400">
+                    * <strong>Doğrusal Borç ($S_D$)</strong> ile <strong>Parabolik Borç Servisi ($S_S$)</strong> eğrileri 18 Kasım 2026'da kesişerek $\Delta_{	ext{Ponzi}} > 0$ rezonansına girmekte, net rezervler (-$42.1B) bu açığı kapatamamaktadır.
+                </div>
+            </div>
+
+            <!-- 2'Lİ GRİD: PANEL 2 & PANEL 3 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- PANEL 2: REER SARKAÇ GERİLİMİ & AMİGDALA STRESİ (lg:col-span-6) -->
+                <div class="glass-panel p-5 space-y-3 lg:col-span-6 border-amber-500/30">
+                    <h3 class="text-xs font-bold text-amber-400 font-mono flex items-center justify-between">
+                        <span>🌊 PANEL 2: REER Sarkaç Gerilimi vs. Amigdala Stresi ($A_{\text{load}}$)</span>
+                        <span class="text-[10px] text-red-400 font-bold">ALARM: $\dot{\theta}<0 \land A_{\text{load}}>0.65$</span>
+                    </h3>
+                    <div class="h-[260px] w-full relative">
+                        <canvas id="reerAmygdalaChart"></canvas>
+                    </div>
+                    <div class="text-[10px] font-mono text-slate-400">
+                        * REER 69.5'te sarkaç tepesi yapmış; aşırı değerli TL ihracatı tıkarken $A_{	ext{load}} = 0.84$ seviyesinde panik bölgesine girmiştir.
+                    </div>
+                </div>
+
+                <!-- PANEL 3: FAZ UZAYI ÇEKİCİ DÜZLEMİ (lg:col-span-6) -->
+                <div class="glass-panel p-5 space-y-3 lg:col-span-6 border-purple-500/30">
+                    <h3 class="text-xs font-bold text-purple-300 font-mono flex items-center justify-between">
+                        <span>🌀 PANEL 3: Faz Uzayı Çekici Düzlemi ($	heta$ vs. $\dot{\theta}$)</span>
+                        <span class="text-[10px] text-purple-400 font-bold">YÖRÜNGE: KAOTİK ÇÖKÜŞ ÇEKİCİSİ</span>
+                    </h3>
+                    <div class="h-[260px] w-full relative">
+                        <canvas id="phaseSpaceChart"></canvas>
+                    </div>
+                    <div class="text-[10px] font-mono text-slate-400">
+                        * Denge çemberinden (Limit Cycle) kopan Türkiye ekonomisi spiral şeklinde dışa açılarak sistemik şok çekicisine kaymaktadır.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 3'LÜ GRİD: PANEL 4, PANEL 5 & PANEL 6 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- PANEL 4: LİKİDİTE VE KARŞI TARAF GÜVENSİZLİK TERMOMETRESİ (lg:col-span-4) -->
+                <div class="glass-panel p-4 space-y-2 lg:col-span-4 border-cyan-500/30">
+                    <h3 class="text-xs font-bold text-cyan-300 font-mono">
+                        🌡️ PANEL 4: Güvensizlik Barometresi ($Z$-Score)
+                    </h3>
+                    <div class="h-[220px] w-full relative">
+                        <canvas id="distrustBarometerChart"></canvas>
+                    </div>
+                    <div class="text-[10px] font-mono text-slate-400">
+                        * TED Spread ve CDS primleri $+2\sigma$ tarihi kriz eşiğinin üzerindedir ($G_{\text{def}} = 0.782$).
+                    </div>
+                </div>
+
+                <!-- PANEL 5: BANKACILIK & HAYALET KREDİ YÜKÜ (lg:col-span-4) -->
+                <div class="glass-panel p-4 space-y-2 lg:col-span-4 border-amber-500/30">
+                    <h3 class="text-xs font-bold text-amber-400 font-mono">
+                        🏦 PANEL 5: Bankacılık & Hayalet Krediler (%)
+                    </h3>
+                    <div class="h-[220px] w-full relative">
+                        <canvas id="zombieLoansChart"></canvas>
+                    </div>
+                    <div class="text-[10px] font-mono text-slate-400">
+                        * Resmi Stage 3 NPL %1.9 görünürken; yüzdürülen Stage 2 + yapılandırılmış batıklar ile gerçek yük <strong>%4.7</strong>'dir.
+                    </div>
+                </div>
+
+                <!-- PANEL 6: KURUMSAL GÜVENİLİRLİK VE POLİTİKA ÇEKİŞ GÜCÜ (lg:col-span-4) -->
+                <div class="glass-panel p-4 space-y-2 lg:col-span-4 border-purple-500/30">
+                    <h3 class="text-xs font-bold text-purple-300 font-mono">
+                        🏛️ PANEL 6: Politika Çekiş Gücü (Trust Deficit)
+                    </h3>
+                    <div class="h-[220px] w-full relative">
+                        <canvas id="policyTractionChart"></canvas>
+                    </div>
+                    <div class="text-[10px] font-mono text-slate-400">
+                        * Faiz artışlarının enflasyon beklentilerini kıramaması (Likidite Tuzağı / Pushing on a String alarmı).
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. BÖLÜM: MATEMATİKSEL TEŞHİS VE ALARM MATRİSİ -->
+        <section class="glass-panel p-6 space-y-4 border-red-500/40">
+            <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+                🚨 3. GULLINI-T2SAIM TÜRKİYE ALARM TEŞHİSİ: CI = 0.76 (KIRMIZI FAZ)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs font-mono">
+                <div class="p-3 rounded-lg bg-dark-950 border border-slate-800">
+                    <div class="text-slate-400">Gullini Güvensizlik ($G_{\text{def}}$)</div>
+                    <div class="text-xl font-bold text-red-400 mt-1">0.782</div>
+                    <div class="text-[10px] text-slate-500">>0.65 = Kırılma Fazı</div>
+                </div>
+                <div class="p-3 rounded-lg bg-dark-950 border border-slate-800">
+                    <div class="text-slate-400">Amigdala Stres Yükü ($A_{\text{load}}$)</div>
+                    <div class="text-xl font-bold text-red-400 mt-1">0.84</div>
+                    <div class="text-[10px] text-slate-500">PFC Freni Devre Dışı (%16)</div>
+                </div>
+                <div class="p-3 rounded-lg bg-dark-950 border border-slate-800">
+                    <div class="text-slate-400">Minsky Ponzi Açığı ($\Delta_{\text{Ponzi}}$)</div>
+                    <div class="text-xl font-bold text-amber-400 mt-1">+2.89 Trilyon ₺</div>
+                    <div class="text-[10px] text-slate-500">Döviz Borç Servisi Şoku</div>
+                </div>
+                <div class="p-3 rounded-lg bg-dark-950 border border-slate-800">
+                    <div class="text-slate-400">Kriz Skoru (CI Composite)</div>
+                    <div class="text-xl font-bold text-red-400 mt-1">0.76 (KIRMIZI)</div>
+                    <div class="text-[10px] text-red-400">Sistemik Rezonans Aktif</div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-300 font-sans leading-relaxed pt-1">
+                <strong>Operasyonel Sonuç:</strong> Türkiye ekonomisi Gullini Kriz Skalası'nda <strong>CI $\ge$ 0.65 (Kırmızı Faz)</strong> içine girmiştir. $t^*$ tekillik noktası (18 Kasım 2026) öncesinde borç çevrim mekanizması swap hariç net rezervlerin eksi olması sebebiyle dış refinansman şoklarına karşı tamamen savunmasızdır.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 bg-dark-950 p-6 text-center text-xs font-mono text-slate-500">
+        T2SAIM × Emilio Gullini Türkiye Kriz Değerlendirme Protokolü · 5 Katmanlı Piramit & 6 Panel · Veritas Per Se
+    </footer>
+
+    <!-- JAVASCRIPT ÇEKİRDEĞİ: 6 PANELLİ CHART MOTORU -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("Initializing Turkey Emilio Gullini 6-Panel Charts...");
+
+            // PANEL 1: MAKRO REZONANS GRAFİĞİ (700 Günlük / 2024-2026)
+            const ctx1 = document.getElementById('gulliniMacroResonanceChart');
+            if (ctx1) {
+                new Chart(ctx1.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: ['Oca 25', 'Nis 25', 'Tem 25', 'Eki 25', 'Oca 26', 'Nis 26', 'Tem 26', 'Ağu 26 (Bugün)', '18 KASIM 2026 (t*)'],
+                        datasets: [
+                            {
+                                label: 'Toplam Borç Stoku S_D ($ Mr)',
+                                data: [490, 505, 518, 530, 542, 550, 555, 558, 565],
+                                borderColor: '#00f2fe',
+                                borderWidth: 2.5,
+                                yAxisID: 'yBorc'
+                            },
+                            {
+                                label: 'Parabolik Borç Servisi S_S ($ Mr)',
+                                data: [135, 148, 160, 172, 180, 185, 188, 191, 205],
+                                borderColor: '#ff1744',
+                                borderWidth: 3,
+                                pointRadius: 4,
+                                pointBackgroundColor: '#ff1744',
+                                yAxisID: 'yBorc'
+                            },
+                            {
+                                label: 'Swap Hariç Net Rezerv ($ Mr)',
+                                data: [-65.5, -58.0, -48.2, -44.0, -38.5, -35.0, -40.2, -42.1, -52.0],
+                                borderColor: '#ffab00',
+                                borderDash: [4, 4],
+                                borderWidth: 2,
+                                yAxisID: 'yRezerv'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        interaction: { mode: 'index', intersect: false },
+                        scales: {
+                            x: { ticks: { color: (val, idx) => idx === 8 ? '#ff1744' : '#64748b', font: { family: 'JetBrains Mono', size: 10 } } },
+                            yBorc: { position: 'left', title: { display: true, text: 'Borç & Servis ($ Mr)', color: '#00f2fe' }, ticks: { color: '#00f2fe' } },
+                            yRezerv: { position: 'right', title: { display: true, text: 'Net Rezerv ($ Mr)', color: '#ffab00' }, ticks: { color: '#ffab00' }, grid: { drawOnChartArea: false } }
+                        },
+                        plugins: {
+                            legend: { labels: { color: '#cbd5e1', font: { family: 'JetBrains Mono', size: 10 } } }
+                        }
+                    }
+                });
+            }
+
+            // PANEL 2: REER & AMİGDALA GRAFİĞİ
+            const ctx2 = document.getElementById('reerAmygdalaChart');
+            if (ctx2) {
+                new Chart(ctx2.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: ['2021', '2022', '2023', '2024', '2025', '2026 (Ağu)', '18 Kas 2026 (t*)'],
+                        datasets: [
+                            {
+                                label: 'REER Sarkaç Açısı (Endeks)',
+                                data: [48.2, 54.0, 58.5, 64.2, 68.0, 69.5, 62.0],
+                                borderColor: '#00f2fe',
+                                borderWidth: 2.5,
+                                yAxisID: 'yReer'
+                            },
+                            {
+                                label: 'Amigdala Stres Yükü (A_load)',
+                                data: [0.55, 0.68, 0.74, 0.79, 0.81, 0.84, 0.92],
+                                borderColor: '#ff1744',
+                                borderWidth: 2.5,
+                                yAxisID: 'yAload'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: {
+                            x: { ticks: { color: '#64748b', font: { family: 'JetBrains Mono', size: 9 } } },
+                            yReer: { position: 'left', title: { display: true, text: 'REER', color: '#00f2fe' }, ticks: { color: '#00f2fe' } },
+                            yAload: { position: 'right', min: 0, max: 1.0, title: { display: true, text: 'A_load', color: '#ff1744' }, ticks: { color: '#ff1744' }, grid: { drawOnChartArea: false } }
+                        },
+                        plugins: { legend: { labels: { color: '#cbd5e1', font: { family: 'JetBrains Mono', size: 9 } } } }
+                    }
+                });
+            }
+
+            // PANEL 3: FAZ UZAYI ÇEKİCİ DÜZLEMİ (Phase Space Attractor)
+            const ctx3 = document.getElementById('phaseSpaceChart');
+            if (ctx3) {
+                new Chart(ctx3.getContext('2d'), {
+                    type: 'scatter',
+                    data: {
+                        datasets: [
+                            {
+                                label: 'Denge Yörüngesi (Limit Cycle 2005-2010)',
+                                data: [{x: 0, y: 0}, {x: 2, y: 3}, {x: 4, y: 0}, {x: 2, y: -3}, {x: 0, y: 0}],
+                                showLine: true,
+                                borderColor: '#00e676',
+                                borderDash: [4, 4],
+                                borderWidth: 1.5,
+                                pointRadius: 0
+                            },
+                            {
+                                label: 'Kaotik Çöküş Spiral Yörüngesi (2020-2026)',
+                                data: [{x: 2, y: 1}, {x: 5, y: 4}, {x: 9, y: 2}, {x: 14, y: -5}, {x: 20, y: -12}, {x: 28, y: -22}],
+                                showLine: true,
+                                borderColor: '#ff1744',
+                                borderWidth: 3,
+                                pointRadius: 4,
+                                pointBackgroundColor: '#ff1744'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: {
+                            x: { title: { display: true, text: 'Sapma Genliği θ', color: '#94a3b8' }, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.03)' } },
+                            y: { title: { display: true, text: 'Sapma Hızı dθ/dt', color: '#94a3b8' }, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.03)' } }
+                        },
+                        plugins: { legend: { labels: { color: '#cbd5e1', font: { family: 'JetBrains Mono', size: 9 } } } }
+                    }
+                });
+            }
+
+            // PANEL 4: GÜVENSİZLİK BAROMETRESİ (Z-Score)
+            const ctx4 = document.getElementById('distrustBarometerChart');
+            if (ctx4) {
+                new Chart(ctx4.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['TED Spread', '5Y CDS Primi', 'Repo Haircut', 'Kredi Riski Primi'],
+                        datasets: [{
+                            label: 'Z-Skoru (+2σ Üzeri Alarm)',
+                            data: [2.8, 2.4, 2.1, 3.2],
+                            backgroundColor: ['#ff1744', '#ff5252', '#ffab00', '#7928ca']
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: {
+                            x: { ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 } } },
+                            y: { min: 0, max: 4.0, grid: { color: 'rgba(255,255,255,0.03)' }, ticks: { color: '#94a3b8' } }
+                        },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+
+            // PANEL 5: BANKACILIK & HAYALET KREDİLER (Stacked Bar)
+            const ctx5 = document.getElementById('zombieLoansChart');
+            if (ctx5) {
+                new Chart(ctx5.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['2020', '2022', '2024', '2026 (Ağu)'],
+                        datasets: [
+                            { label: 'Resmi Stage 3 NPL (%)', data: [4.1, 2.8, 1.6, 1.9], backgroundColor: '#3b82f6' },
+                            { label: 'Hayalet Krediler (Stage 2 + Forbearance) (%)', data: [7.5, 6.2, 5.1, 4.7], backgroundColor: '#ff1744' }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: {
+                            x: { stacked: true, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 } } },
+                            y: { stacked: true, grid: { color: 'rgba(255,255,255,0.03)' }, ticks: { color: '#94a3b8' } }
+                        },
+                        plugins: { legend: { labels: { color: '#cbd5e1', font: { family: 'JetBrains Mono', size: 9 } } } }
+                    }
+                });
+            }
+
+            // PANEL 6: POLİTİKA ÇEKİŞ GÜCÜ GRAFİĞİ
+            const ctx6 = document.getElementById('policyTractionChart');
+            if (ctx6) {
+                new Chart(ctx6.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: ['2020', '2022', '2024', '2026'],
+                        datasets: [
+                            { label: 'TCMB Politika Faizi (%)', data: [17.0, 9.0, 50.0, 50.0], borderColor: '#00f2fe', borderWidth: 2 },
+                            { label: '12 Ay Enflasyon Beklentisi (%)', data: [11.5, 34.0, 42.0, 38.0], borderColor: '#ffab00', borderWidth: 2 },
+                            { label: 'V-Dem Hukuk/Yargı Endeksi (x100)', data: [28, 22, 19, 18], borderColor: '#ff1744', borderDash: [4, 4], borderWidth: 2 }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: {
+                            x: { ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 } } },
+                            y: { grid: { color: 'rgba(255,255,255,0.03)' }, ticks: { color: '#94a3b8' } }
+                        },
+                        plugins: { legend: { labels: { color: '#cbd5e1', font: { family: 'JetBrains Mono', size: 8.5 } } } }
+                    }
+                });
+            }
+
+            console.log("✅ All 6 Gullini Panels Loaded.");
+        });
+    
+        function openOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.remove('hidden'); m.classList.add('flex'); }
+        }
+        function closeOsintVerifiedModal() {
+            const m = document.getElementById('osintVerifiedModal');
+            if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+        }
+        
+    </script>
+
+</body>
+</html>
