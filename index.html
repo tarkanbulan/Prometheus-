@@ -181,8 +181,8 @@
             </div>
         </div>
 
-        <!-- AÇILAN KONTROL PANELİ (BAŞARILI GİRİŞTEN SONRA GÖRÜNÜR) -->
-        <div id="portalHub" class="hidden space-y-6">
+                <!-- AÇILAN KONTROL PANELİ (BAŞARILI GİRİŞTEN SONRA GÖRÜNÜR) -->
+        <div id="portalHub" class="hidden space-y-8">
             <div class="text-center space-y-1">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/30 text-xs font-mono text-green-400 font-bold">
                     <span>✅ ERİŞİM ONAYLANDI · T2SAIM KARARGÂHI ÇEVRİMİÇİ</span>
@@ -192,118 +192,138 @@
                 </h3>
             </div>
 
-            <!-- 4 ANA PLATFORM KARTI -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                
-                <!-- 1. TARKAN INDEX -->
-                <a href="tarkan_index.html" class="glass-card p-6 rounded-2xl border-cyan-500/30 space-y-3 block group">
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl">⚡</span>
-                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/40">
-                            ANA KRİZ PANOSU
-                        </span>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white group-hover:text-cyan-300 transition font-mono">
-                            Tarco Crisis Index (T2SAIM v3.0 Master EWS)
-                        </h4>
-                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
-                            700 Günlük Çok Katmanlı Likidite Koridoru, 2M Merton Jump-Diffusion Simülasyonu, 18 Kasım Tekillik Analizi ve EMPI KLR Sinyalleri.
-                        </p>
-                    </div>
-                    <div class="text-[11px] font-mono text-cyan-400 flex items-center gap-1 font-bold pt-1">
-                        <span>Terminali Başlat →</span>
-                    </div>
-                </a>
+            <!-- BÖLÜM 1: 4 ANA MAKRO & SİSTEMİK KRİZ PLATFORMU (2x2 GRID) -->
+            <div class="space-y-3">
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400 uppercase tracking-wider font-bold px-1">
+                    <span>📊 1. MAKROEKONOMİK, KURUMSAL VE EKONOFİZİK KRİZ PLATFORMLARI</span>
+                </div>
 
-                <!-- 2. DARON ACEMOĞLU SENTEZİ -->
-                <a href="daron_acemoglu_master_synthesis.html" class="glass-card p-6 rounded-2xl border-amber-500/30 space-y-3 block group">
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl">🏛️</span>
-                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40">
-                            NOBEL KURUMSAL SENTEZ
-                        </span>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white group-hover:text-amber-300 transition font-mono">
-                            Daron Acemoğlu Kurumsal Ekonomi Sentezi
-                        </h4>
-                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
-                            Siyasal Gücün Oyun Teorisi (MPE), Dar Koridor Diferansiyel Faz Düzlemi, Ağ Şokları (Bonacich) ve Uluslararası IDIS Endeksi.
-                        </p>
-                    </div>
-                    <div class="text-[11px] font-mono text-amber-400 flex items-center gap-1 font-bold pt-1">
-                        <span>Raporu İncele →</span>
-                    </div>
-                </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    
+                    <!-- 1. TARKAN INDEX -->
+                    <a href="tarkan_index.html" class="glass-card p-6 rounded-2xl border-cyan-500/30 space-y-3 block group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">⚡</span>
+                            <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/40">
+                                ANA KRİZ PANOSU
+                            </span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white group-hover:text-cyan-300 transition font-mono">
+                                Tarco Crisis Index (T2SAIM v3.0 Master EWS)
+                            </h4>
+                            <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
+                                700 Günlük Çok Katmanlı Likidite Koridoru, 2M Merton Jump-Diffusion Simülasyonu, 18 Kasım Tekillik Analizi ve EMPI KLR Sinyalleri.
+                            </p>
+                        </div>
+                        <div class="text-[11px] font-mono text-cyan-400 flex items-center gap-1 font-bold pt-1">
+                            <span>Terminali Başlat →</span>
+                        </div>
+                    </a>
 
-                <!-- 3. EMILIO GULLINI KRİZ PROTOKOLÜ -->
-                <a href="turkey_gullini_crisis_protocol.html" class="glass-card p-6 rounded-2xl border-red-500/30 space-y-3 block group">
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl">🔺</span>
-                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-red-500/20 text-red-300 font-bold border border-red-500/40">
-                            EKONOFİZİK PROTOKOL
-                        </span>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white group-hover:text-red-400 transition font-mono">
-                            Emilio Gullini Türkiye Kriz Protokolü
-                        </h4>
-                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
-                            5 Katmanlı Kriz Piramidi, REER Sarkaç Gerilimi, Faz Uzayı Kaotik Çöküş Çekicisi ve 6 Panelli Ekonofizik Gösterge Paneli.
-                        </p>
-                    </div>
-                    <div class="text-[11px] font-mono text-red-400 flex items-center gap-1 font-bold pt-1">
-                        <span>Protokolü Aç →</span>
-                    </div>
-                </a>
+                    <!-- 2. DARON ACEMOĞLU SENTEZİ -->
+                    <a href="daron_acemoglu_master_synthesis.html" class="glass-card p-6 rounded-2xl border-amber-500/30 space-y-3 block group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">🏛️</span>
+                            <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40">
+                                NOBEL KURUMSAL SENTEZ
+                            </span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white group-hover:text-amber-300 transition font-mono">
+                                Daron Acemoğlu Kurumsal Ekonomi Sentezi
+                            </h4>
+                            <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
+                                Siyasal Gücün Oyun Teorisi (MPE), Dar Koridor Diferansiyel Faz Düzlemi, Ağ Şokları (Bonacich) ve Uluslararası IDIS Endeksi.
+                            </p>
+                        </div>
+                        <div class="text-[11px] font-mono text-amber-400 flex items-center gap-1 font-bold pt-1">
+                            <span>Raporu İncele →</span>
+                        </div>
+                    </a>
 
-                                <!-- 5. BİRLEŞİK HAFIZA VE SOHBET MERKEZİ -->
-                <a href="t2saim_unified_memory_chat.html" class="glass-card p-6 rounded-2xl border-purple-500/30 space-y-3 block group md:col-span-2">
+                    <!-- 3. EMILIO GULLINI KRİZ PROTOKOLÜ -->
+                    <a href="turkey_gullini_crisis_protocol.html" class="glass-card p-6 rounded-2xl border-red-500/30 space-y-3 block group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">🔺</span>
+                            <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-red-500/20 text-red-300 font-bold border border-red-500/40">
+                                EKONOFİZİK PROTOKOL
+                            </span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white group-hover:text-red-400 transition font-mono">
+                                Emilio Gullini Türkiye Kriz Protokolü
+                            </h4>
+                            <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
+                                5 Katmanlı Kriz Piramidi, REER Sarkaç Gerilimi, Faz Uzayı Kaotik Çöküş Çekicisi ve 6 Panelli Ekonofizik Gösterge Paneli.
+                            </p>
+                        </div>
+                        <div class="text-[11px] font-mono text-red-400 flex items-center gap-1 font-bold pt-1">
+                            <span>Protokolü Aç →</span>
+                        </div>
+                    </a>
+
+                    <!-- 4. YAPISAL & TOPLUMSAL ÇÜRÜME RAPORU -->
+                    <a href="structural_decay.html" class="glass-card p-6 rounded-2xl border-purple-500/30 space-y-3 block group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl">📊</span>
+                            <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold border border-purple-500/40">
+                                TOPLUMSAL & MALİ ÇÜRÜME
+                            </span>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white group-hover:text-purple-300 transition font-mono">
+                                Yapısal, Mali & Toplumsal Çürüme Raporu
+                            </h4>
+                            <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
+                                17 İnteraktif Grafik, 10 Yıllık Vergi ve Varlık Afları, 160 Mr $ Londra Tahkim KÖİ Borcu, Şiddet & Narkotik İstatistikleri.
+                            </p>
+                        </div>
+                        <div class="text-[11px] font-mono text-purple-400 flex items-center gap-1 font-bold pt-1">
+                            <span>Analizi Gör →</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- 🌟 AYIRIM ÇİZGİSİ (ELEGANT GLOWING DIVIDER) -->
+            <div class="relative py-4">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-purple-500/40 shadow-lg shadow-purple-500/20"></div>
+                </div>
+                <div class="relative flex justify-center">
+                    <span class="bg-dark-900 px-5 py-1.5 rounded-full text-xs font-mono text-purple-300 border border-purple-500/40 uppercase tracking-widest font-bold shadow-md shadow-purple-500/10 flex items-center gap-2">
+                        <span>🧠</span> BİLİŞSEL HAFIZA, GBRAIN VE YAPAY ZEKA SOHBET KONSOLU
+                    </span>
+                </div>
+            </div>
+
+            <!-- BÖLÜM 2: BİRLEŞİK BİLİŞSEL HAFIZA & ÇOK KATMANLI SOHBET İSTASYONU -->
+            <div class="space-y-3">
+                <a href="t2saim_unified_memory_chat.html" class="glass-card p-6 rounded-2xl border-purple-500/40 space-y-3 block group hover:border-purple-400 bg-purple-950/20">
                     <div class="flex items-center justify-between">
-                        <span class="text-2xl">🧠</span>
-                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold border border-purple-500/40">
-                            GBRAIN × VISION × NOTEBOOKLM
+                        <span class="text-3xl">🧠</span>
+                        <span class="text-xs font-mono px-3 py-1 rounded bg-purple-500/30 text-purple-200 font-bold border border-purple-500/50">
+                            GBRAIN × VISION (459k KARE) × NOTEBOOKLM GEMINI 2.5 MCP
                         </span>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-white group-hover:text-purple-300 transition font-mono">
+                        <h4 class="text-xl font-bold text-white group-hover:text-purple-300 transition font-mono">
                             T2SAIM Birleşik Bilişsel Hafıza & Çok Katmanlı Sohbet İstasyonu
                         </h4>
-                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
-                            459k Görsel Ekran Arşivi (DuckDB BM25 FTS), Antigravity History Düşünce Zincirleri (Thinking Chains), NotebookLM Gemini 2.5 MCP (Port 3456) ve LTM-OS Ontoloji Grafı ile Çapraz Sorgulama.
+                        <p class="text-xs text-slate-300 mt-1.5 font-sans leading-relaxed">
+                            459.759 Görsel Ekran Arşivi (DuckDB BM25 FTS), Antigravity History Düşünce Zincirleri (Thinking Chains), NotebookLM Gemini 2.5 MCP (Port 3456) ve LTM-OS Ontoloji Grafı ile Doğrudan Çapraz Sorgulama ve Analiz.
                         </p>
                     </div>
-                    <div class="text-[11px] font-mono text-purple-400 flex items-center gap-1 font-bold pt-1">
-                        <span>Hafıza & Sohbet İstasyonuna Gir →</span>
+                    <div class="text-xs font-mono text-purple-300 flex items-center gap-1.5 font-bold pt-1">
+                        <span>Hafıza & Sohbet İstasyonunu Başlat ↵</span>
                     </div>
                 </a>
-
-                <!-- 4. YAPISAL & TOPLUMSAL ÇÜRÜME RAPORU -->
-                <a href="structural_decay.html" class="glass-card p-6 rounded-2xl border-purple-500/30 space-y-3 block group">
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl">📊</span>
-                        <span class="text-[10px] font-mono px-2.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold border border-purple-500/40">
-                            TOPLUMSAL & MALİ ÇÜRÜME
-                        </span>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white group-hover:text-purple-300 transition font-mono">
-                            Yapısal, Mali & Toplumsal Çürüme Raporu
-                        </h4>
-                        <p class="text-xs text-slate-400 mt-1 font-sans leading-relaxed">
-                            17 İnteraktif Grafik, 10 Yıllık Vergi ve Varlık Afları, 160 Mr $ Londra Tahkim KÖİ Borcu, Şiddet & Narkotik İstatistikleri.
-                        </p>
-                    </div>
-                    <div class="text-[11px] font-mono text-purple-400 flex items-center gap-1 font-bold pt-1">
-                        <span>Analizi Gör →</span>
-                    </div>
-                </a>
-
             </div>
 
             <!-- Çıkış / Kilitle Butonu -->
-            <div class="text-center pt-4">
+            <div class="text-center pt-2">
                 <button onclick="lockPortal()" class="px-4 py-2 rounded-lg bg-dark-900 border border-slate-800 text-xs font-mono text-slate-400 hover:text-white hover:border-slate-700 transition">
                     🔒 Karargâhı Yeniden Kilitle (Güvenli Çıkış)
                 </button>
